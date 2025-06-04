@@ -9,7 +9,6 @@ Existe uma demanda crescente por plataformas que facilitem não apenas a conexã
 
 * Antônio Oliveira Garíglio
 * Felipe dos Reis Araújo
-* Gabriel Cardoso da Gama
 * Gustavo Henrique Silva
 * Mario Wagner Resende Finelli Junior
 * Miguel Andrade Nascimento
