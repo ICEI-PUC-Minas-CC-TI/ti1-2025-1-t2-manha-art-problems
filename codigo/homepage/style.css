@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* Cores */
+:root {
+    --color-primary: #4a6c6d; 
+    --color-secondary: #8c8c7c; 
+    --color-accent: #b08d57; 
+    --color-background: #fdfaf6; 
+    --color-text: #2f3e46; 
+    --color-light-background: #e6e3d2;
+
+    /* Cores do cabeçalho */
+    --header-bg-color: #3b5a5b; 
+    --header-item-bg-color: #4a6c6d; 
+    --header-icon-color: #fdfaf6; 
+    --header-logo-color: #b08d57; 
+}
+
+/* Estilos Gerais */
+body {
+    font-family: 'Playfair Display', serif; 
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px; 
+}
+
+/* Fontes*/
+.art-nouveau-text {
+    font-family: 'Marcellus SC', serif; 
+    font-weight: normal; 
+    letter-spacing: 1px;
+}
+
+/* Header */
+.header {
+    background-color: var(--header-bg-color); 
+    padding: 0; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
+    display: flex; 
+    height: 70px; 
+    align-items: stretch; 
+}
+
+.header-content { 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    padding: 0; 
+}
+
+/* Menu Hamburger */
+.hamburger-menu {
+    background: none;
+    border: none;
+    color: var(--header-icon-color);
+    font-size: 1.8em;
+    padding: 0 20px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+    transition: background-color 0.3s ease;
+    border-right: 1px solid rgba(0,0,0,0.1); 
+}
+
+.hamburger-menu:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Logo */
+.header .logo {
+    margin: 0;
+    font-size: 2.5em; 
+    color: var(--header-logo-color); 
+    text-shadow: none; 
+    display: flex;
+    align-items: center;
+    padding: 0 20px; 
+    border-right: 1px solid rgba(0,0,0,0.1); 
+}
+
+
+/* Ícones de Navegação Central */
+.nav-icons {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100%; 
+}
+
+.nav-icons ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100%;
+}
+
+.nav-icons ul li {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+
+}
+
+.nav-icons ul li a {
+    color: var(--header-icon-color);
+    text-decoration: none;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center; 
+    padding: 0 25px; 
+    height: 100%;
+    transition: background-color 0.3s ease;
+    border-right: 1px solid rgba(0,0,0,0.1); 
+    border-left: 1px solid rgba(255,255,255,0.05); 
+}
+
+.nav-icons ul li:first-child a {
+    border-left: none;
+}
+
+.nav-icons ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-icons ul li a i {
+    font-size: 1.5em; 
+}
+
+
+.icon-label {
+    display: none;
+}
+
+.nav-item-compras { order: 1; }
+.nav-item-inicio { order: 2; }
+.nav-item-quickfinder { order: 3; }
+
+
+/* Perfil */
+.profile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-left: 1px solid rgba(255,255,255,0.05); 
+}
