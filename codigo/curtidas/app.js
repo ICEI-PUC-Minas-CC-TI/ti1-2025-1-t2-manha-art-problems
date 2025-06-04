@@ -44,7 +44,6 @@ function boost() {
     // Aplica a animação de chacoalho
     perfil.style.animation = 'shake 0.5s ease-in-out';
 
-    // Opcional: alerta ou console para feedback
     console.log("Boost ativado!");
 
     // Remove a animação após terminar para poder reaplicá-la
@@ -60,6 +59,12 @@ function superLike() {
     setTimeout(() => {
         perfil.style.transform = '';
     }, 500);
+     // 4. Após centralizar, carrega próximo perfil
+        setTimeout(() => {
+            proximoPerfil();
+            perfil.style.transition = '';
+        }, 300);
+    
 }
 // Carrega próximo perfil sem reload
 function proximoPerfil() {
@@ -137,3 +142,7 @@ function verPreviewPortfolio() {
 function atualizarPerfil(){
 proximoPerfil();
 }
+
+ function enviarMensagem() {
+    window.location.href = "chat.html";
+  }
