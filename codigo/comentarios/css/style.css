@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #5a2a8a; /* Um roxo mais vibrante */
+    background-color: #5a2a8a; 
     color: #fff;
     padding: 15px 0;
     text-align: center;
@@ -20,7 +20,7 @@ header h1 {
 }
 
 nav {
-    background-color: #4a217c; /* Um roxo um pouco mais escuro */
+    background-color: #4a217c; 
     padding: 10px 0;
     text-align: center;
 }
@@ -34,7 +34,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #d1b4ff; /* Um roxo claro para hover */
+    color: #d1b4ff; 
 }
 
 .container {
@@ -89,7 +89,7 @@ nav a:hover {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
-    box-sizing: border-box; /* Garante que padding e border não aumentem a largura total */
+    box-sizing: border-box; 
 }
 
 #comment-form textarea {
@@ -112,7 +112,7 @@ nav a:hover {
 }
 
 #comment-form button:hover {
-    background-color: #7c41b8; /* Um roxo mais claro no hover */
+    background-color: #7c41b8; 
 }
 
 #comments-list {

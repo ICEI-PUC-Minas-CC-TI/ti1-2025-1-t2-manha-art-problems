@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitCommentButton = document.getElementById('submit-comment');
     const commentsListDiv = document.getElementById('comments-list');
 
-    let comments = []; // Array para armazenar os comentários
+    let comments = []; 
 
-    // Função para carregar comentários do localStorage
+  
     function loadComments() {
         const storedComments = localStorage.getItem('artistComments');
         if (storedComments) {
@@ -15,15 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para salvar comentários no localStorage
+
     function saveComments() {
         localStorage.setItem('artistComments', JSON.stringify(comments));
     }
 
-    // Função para renderizar (exibir) os comentários no HTML
+    
     function renderComments() {
-        commentsListDiv.innerHTML = ''; // Limpa a lista antes de renderizar
-        // Renderiza os comentários em ordem inversa para os mais recentes aparecerem primeiro
+        commentsListDiv.innerHTML = ''; 
+     
         for (let i = comments.length - 1; i >= 0; i--) {
             const comment = comments[i];
             const commentCard = document.createElement('div');
@@ -38,11 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>${comment.text}</p>
                 </div>
             `;
-            commentsListDiv.appendChild(commentCard); // Adiciona ao final da lista
+            commentsListDiv.appendChild(commentCard); 
         }
     }
 
-    // Event listener para o botão de enviar comentário
+  
     submitCommentButton.addEventListener('click', () => {
         const author = authorNameInput.value.trim();
         const text = commentTextInput.value.trim();
@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 date: formattedDate
             };
 
-            comments.push(newComment); // Adiciona o novo comentário ao array
-            saveComments(); // Salva no localStorage
-            renderComments(); // Renderiza novamente a lista
+            comments.push(newComment); 
+            saveComments(); 
+            renderComments(); 
             
-            // Limpa o formulário
+          
             authorNameInput.value = '';
             commentTextInput.value = '';
         } else {
@@ -70,6 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Carrega os comentários quando a página é carregada
+    
     loadComments();
 });
