@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Sistema de Reviews</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+
+    .review-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      width: 280px;
+      padding: 15px;
+      animation: fadeIn 0.3s ease-in-out;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #333;
+      text-align: center;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 6px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 13px;
+    }
+
+    button {
+      margin-top: 8px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 6px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .star-rating {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-top: 6px;
+      font-size: 18px;
+    }
+
+    .star {
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .star.active {
+      color: gold;
+    }
+
+    #reviews-list {
+      margin-top: 15px;
+      max-height: 150px;
+      overflow-y: auto;
+      font-size: 13px;
+    }
+
+    .review-item {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 6px;
+      margin-bottom: 6px;
+    }
+
+    .review-stars {
+      color: gold;
+      font-size: 14px;
+    }
+
+    .review-name {
+      font-weight: bold;
+    }
+
+    .review-date {
+      font-size: 11px;
+      color: #999;
+    }
+
+    .review-comment {
+      margin-top: 4px;
+    }
+
+    .review-actions {
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      gap: 4px;
+    }
+
+    .review-actions button {
+      font-size: 12px;
+      padding: 4px 6px;
+      width: 100%;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    .review-actions button:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="review-box">
+    <h4>Avaliações</h4>
+
+    <form id="reviewForm">
+      <input type="text" id="reviewName" placeholder="Seu nome" required />
+
+      <div class="star-rating" id="starRating">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+      </div>
+
+      <textarea id="reviewComment" rows="2" placeholder="Escreva sua opinião..."></textarea>
+
+      <button id="submitBtn" type="submit">Enviar Avaliação</button>
+    </form>
+
+    <div id="reviews-list"></div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
