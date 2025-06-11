@@ -61,7 +61,6 @@ main {
     top: 10vh;
     right: 0;
     width: 30vw;
-    height: 90vh;
     max-height: 90vh;
     overflow-y: auto;
     background: #23232e;
@@ -85,15 +84,45 @@ main {
 }
 
 .profile-image {
+    position: relative;
+    display: flex;
     background: #000;
-    width: 5rem;
-    height: 5rem;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
     margin-bottom: 2rem;
 }
 
 .profile-image input {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    cursor: pointer;
     display: none;
+}
+
+.profile-image.active input {
+    display: block;
+}
+
+.profile-image i {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: #333333;
+    position: absolute;
+    background-color: #cccccc;
+    opacity: 0.5;
+    border-radius: 50%;
+    transition: all 0.3s;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-image.active i {
+    display: flex;
 }
 
 .buttons {
@@ -152,10 +181,26 @@ main {
 .form-group label {
     font-size: 1rem;
     color: #aaaaaa;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-input[type="text"] {
+.form-group button {
+    display: none;
+    background: #f0f0f0;
+    color: #23232e;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.form-group button:hover {
+    background: #23232e;
+    color: #f0f0f0;
+}
+
+input[type="text"],
+input[type="number"] {
     font-size: 1.2rem;
     color: #f0f0f0;
     background: transparent;
@@ -165,7 +210,8 @@ input[type="text"] {
     border-radius: 0.5rem;
 }
 
-input[type="text"]:disabled {
+input[type="text"]:disabled,
+input[type="number"]:disabled {
     border: none;
 }
 
@@ -185,3 +231,94 @@ textarea {
 textarea:disabled {
     border: none;
 }
+
+input.error,
+textarea.error {
+    border: 1px solid #e53935;
+}
+
+.portfolio-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.portfolio-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.portfolio-item span {
+    font-size: 2rem;
+    color: #cccccc;
+    margin-left: 0.5rem;
+}
+
+.remove-item {
+    display: block;
+}
+
+.projects-list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.project-item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 0.5rem;
+}
+
+.project-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+
+.project-item i {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 7rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    background: #333333;
+    opacity: 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.project-item i:hover {
+    opacity: 0.5;
+}
+
+.projects-list.active .project-item i {
+    display: flex;
+}
+
+.projects-add-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background: #f0f0f0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
