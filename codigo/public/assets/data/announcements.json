@@ -1,0 +1,42 @@
+[
+    {
+        "id": "1",
+        "title": "Grafiteiro",
+        "description": "Arte urbana vibrante e expressiva que transforma espaços, utilizando cores e formas para contar histórias e provocar reflexão nas ruas da cidade.",
+        "category": "Artista de Rua (Grafiteiro, Muralista)",
+        "price": "R$ 100,00",
+        "imageUrl": "assets/img/rua.jpeg"
+    },
+    {
+        "id": "2",
+        "title": "Fotógrafo Profissional",
+        "description": "Captura momentos e emoções com sensibilidade, transformando instantes em memórias eternas através de um olhar único e profissional.",
+        "category": "Fotógrafo",
+        "price": "R$ 540,00",
+        "imageUrl": "assets/img/ohmaga.jpeg"
+    },
+    {
+        "id": "3",
+        "title": "Escultor em Madeira",
+        "description": "Escultura em madeira de lei, inspirada nas formas fluidas da natureza.",
+        "category": "Escultor",
+        "price": "R$ 250,00",
+        "imageUrl": "assets/img/Test.jpg"
+    },
+    {
+        "id": "4",
+        "title": "Técnico de Som",
+        "description": "Expertise em mixagem e masterização, garantindo a qualidade sonora impecável para eventos, gravações e produções audiovisuais, elevando cada nota e palavra ao máximo.",
+        "category": "Técnico de Som (Mixagem, Captação)",
+        "price": "R$ 400,00",
+        "imageUrl": "assets/img/som.jpeg"
+    },
+    {
+        "id": "5",
+        "title": "Música Profissional",
+        "description": " Melodias envolventes e arranjos sofisticados que criam a atmosfera perfeita para qualquer ocasião, do clássico ao contemporâneo.",
+        "category": "Músico (Instrumentista, Vocalista)",
+        "price": "R$ 700,00",
+        "imageUrl": "assets/img/musica.jpeg"
+    }
+]
