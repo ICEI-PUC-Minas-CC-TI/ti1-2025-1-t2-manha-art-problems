@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArtFlow - Login</title>
-    <link rel="stylesheet" href="assets/css/style.css">     <link rel="stylesheet" href="assets/css/login.css">     <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <title>ArtFlow - Login ou Cadastro</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -37,10 +39,8 @@
                 </ul>
             </nav>
             <div class="profile-icon">
-                <a href="#" aria-label="Meu Perfil">
-                    <i class="fas fa-user-circle"></i>
-                    <span class="icon-label">Perfil</span>
-                </a>
+                <a href="#" aria-label="Meu Perfil" id="profileIconLink"> <i class="fas fa-user-circle"></i>
+                    <span class="icon-label" id="profileLabel">Perfil</span> </a>
             </div>
         </div>
     </header>
@@ -48,19 +48,66 @@
     <main class="main-content login-page">
         <div class="container login-container">
             <div class="login-card art-nouveau-card">
-                <h2 class="art-nouveau-text">Acesse Sua Conta</h2>
-                <form id="loginForm" class="login-form">
-                    <div class="form-group">
-                        <label for="username">Usuário ou Email:</label>
-                        <input type="text" id="username" class="art-nouveau-input" placeholder="Seu usuário ou email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Senha:</label>
-                        <input type="password" id="password" class="art-nouveau-input" placeholder="Sua senha" required>
-                    </div>
-                    <button type="submit" class="art-nouveau-button">Entrar na ArtFlow</button>
-                    <p id="loginMessage" class="login-message"></p>
-                </form>
+                <div class="form-toggle">
+                    <button id="showLogin" class="art-nouveau-button toggle-active">Já tenho conta</button>
+                    <button id="showRegister" class="art-nouveau-button">Criar Conta</button>
+                </div>
+
+                <div id="loginSection">
+                    <h2 class="art-nouveau-text">Acesse Sua Conta</h2>
+                    <form id="loginForm" class="auth-form">
+                        <div class="form-group">
+                            <label for="loginUsername">Usuário ou Email:</label>
+                            <input type="text" id="loginUsername" class="art-nouveau-input" placeholder="Seu usuário ou email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Senha:</label>
+                            <input type="password" id="loginPassword" class="art-nouveau-input" placeholder="Sua senha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userType">Você é:</label>
+                            <select id="userType" class="art-nouveau-input" required>
+                                <option value="">Selecione...</option>
+                                <option value="cliente">Cliente</option>
+                                <option value="artflow">ArtFlow (Artista)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="art-nouveau-button">Entrar na ArtFlow</button>
+                        <p id="loginMessage" class="auth-message"></p>
+                    </form>
+                </div>
+
+                <div id="registerSection" style="display:none;">
+                    <h2 class="art-nouveau-text">Crie Sua Conta</h2>
+                    <form id="registerForm" class="auth-form">
+                        <div class="form-group">
+                            <label for="registerUsername">Nome de Usuário:</label>
+                            <input type="text" id="registerUsername" class="art-nouveau-input" placeholder="Seu nome de usuário" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email:</label>
+                            <input type="email" id="registerEmail" class="art-nouveau-input" placeholder="seu@roberto.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Senha:</label>
+                            <input type="password" id="registerPassword" class="art-nouveau-input" placeholder="Mínimo 6 caracteres" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar Senha:</label>
+                            <input type="password" id="confirmPassword" class="art-nouveau-input" placeholder="Confirme sua senha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerUserType">Tipo de Conta:</label>
+                            <select id="registerUserType" class="art-nouveau-input" required>
+                                <option value="">Selecione...</option>
+                                <option value="cliente">Cliente</option>
+                                <option value="artflow">ArtFlow (Artista)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="art-nouveau-button">Registrar Agora</button>
+                        <p id="registerMessage" class="auth-message"></p>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
@@ -71,5 +118,6 @@
         </div>
     </footer>
 
-    <script src="assets/js/auth.js"></script>  <script src="assets/js/login.js"></script>  </body>
+    <script type="module" src="assets/js/login.js"></script>
+</body>
 </html>

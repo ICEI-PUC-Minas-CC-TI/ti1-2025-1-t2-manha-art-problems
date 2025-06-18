@@ -50,9 +50,9 @@
                 </ul>
             </nav>
             <div class="profile-icon">
-                <a href="#" aria-label="Meu Perfil">
+                <a href="#" aria-label="Meu Perfil" id="profileIconLink">
                     <i class="fas fa-user-circle"></i>
-                    <span class="icon-label">Perfil</span>
+                    <span class="icon-label" id="profileLabel">Perfil</span>
                 </a>
             </div>
         </div>
@@ -84,21 +84,35 @@
         </div>
     </footer>
 
-    <script src="assets/js/auth.js"></script> <script src="assets/js/script.js"></script>
-    <script>
+    <script src="assets/js/script.js"></script>
+    <script type="module">
         // Lógica para mostrar/esconder links de Login/Logout e gerenciar logout
-        import { isAuthenticated, logoutUser } from './assets/js/auth.js';
+        import { isAuthenticated, logoutUser, getCurrentUsername, getUserType } from './assets/js/auth.js';
 
         document.addEventListener('DOMContentLoaded', () => {
             const navLoginLink = document.getElementById('navLoginLink');
             const navLogoutLink = document.getElementById('navLogoutLink');
+            const profileLabel = document.getElementById('profileLabel');
+            const profileIconLink = document.getElementById('profileIconLink'); // Novo elemento
 
             if (isAuthenticated()) {
                 navLoginLink.style.display = 'none';
-                navLogoutLink.style.display = 'list-item'; // Ou 'block'
+                navLogoutLink.style.display = 'list-item'; // Mostra o logout
+                // Atualiza o rótulo do perfil
+                const username = getCurrentUsername();
+                const userType = getUserType();
+                if (username && userType) {
+                    profileLabel.textContent = `${username} (${userType.charAt(0).toUpperCase() + userType.slice(1)})`;
+                } else {
+                    profileLabel.textContent = 'Perfil'; // Fallback
+                }
+                profileIconLink.href = "#"; // Se logado, o link de perfil pode ir para # (ou futura página de perfil)
+
             } else {
-                navLoginLink.style.display = 'list-item'; // Ou 'block'
+                navLoginLink.style.display = 'list-item';
                 navLogoutLink.style.display = 'none';
+                profileLabel.textContent = 'Perfil';
+                profileIconLink.href = "login.html"; // Se não logado, o link de perfil vai para a página de login
             }
 
             navLogoutLink.querySelector('a').addEventListener('click', (e) => {
