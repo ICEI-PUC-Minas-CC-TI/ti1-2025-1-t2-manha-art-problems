@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Anúncio - ArtFlow</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/announcement-detail.css"> <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <button class="hamburger-menu" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="logo art-nouveau-text">ArtFlow</h1>
+            <nav class="nav-icons">
+                <ul>
+                    <li class="nav-item-compras">
+                        <a href="#" aria-label="Minhas Compras">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="icon-label">Compras</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-inicio">
+                        <a href="index.html" aria-label="Página Inicial">
+                            <i class="fas fa-home"></i>
+                            <span class="icon-label">Início</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-quickfinder">
+                        <a href="#" aria-label="Quickfinder">
+                            <i class="fas fa-bolt"></i>
+                            <span class="icon-label">Quickfinder</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-login" id="navLoginLink">
+                        <a href="login.html" aria-label="Login">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span class="icon-label">Login</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-logout" id="navLogoutLink" style="display:none;">
+                        <a href="#" aria-label="Sair">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span class="icon-label">Sair</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="profile-icon">
+                <a href="#" aria-label="Meu Perfil" id="profileIconLink">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="icon-label" id="profileLabel">Perfil</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container announcement-detail-wrapper">
+            <div id="announcement-details" class="art-nouveau-card">
+                <p>Carregando detalhes do anúncio...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="art-nouveau-text">&copy; 2025 ArtFlow - Onde a arte encontra seu fluxo.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="assets/js/auth.js"></script>
+    <script type="module">
+        // Lógica para mostrar/esconder links de Login/Logout (copiado de index.html para consistência)
+        import { isAuthenticated, logoutUser, getCurrentUsername, getUserType } from './assets/js/auth.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLoginLink = document.getElementById('navLoginLink');
+            const navLogoutLink = document.getElementById('navLogoutLink');
+            const profileLabel = document.getElementById('profileLabel');
+            const profileIconLink = document.getElementById('profileIconLink');
+
+            if (isAuthenticated()) {
+                navLoginLink.style.display = 'none';
+                navLogoutLink.style.display = 'list-item';
+                const username = getCurrentUsername();
+                const userType = getUserType();
+                if (username && userType) {
+                    profileLabel.textContent = `${username} (${userType.charAt(0).toUpperCase() + userType.slice(1)})`;
+                } else {
+                    profileLabel.textContent = 'Perfil';
+                }
+                profileIconLink.href = "#";
+            } else {
+                navLoginLink.style.display = 'list-item';
+                navLogoutLink.style.display = 'none';
+                profileLabel.textContent = 'Perfil';
+                profileIconLink.href = "login.html";
+            }
+
+            navLogoutLink.querySelector('a').addEventListener('click', (e) => {
+                e.preventDefault();
+                logoutUser();
+                window.location.href = 'login.html';
+            });
+
+            // Lógica para carregar detalhes do anúncio
+            const params = new URLSearchParams(window.location.search);
+            const announcementId = params.get('id');
+            const detailsContainer = document.getElementById('announcement-details');
+
+            if (!announcementId) {
+                detailsContainer.innerHTML = '<p>Anúncio não encontrado. ID não especificado.</p>';
+                return;
+            }
+
+            fetch('assets/data/announcements.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erro ao carregar anúncios: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(announcements => {
+                    const announcement = announcements.find(a => a.id === announcementId);
+
+                    if (announcement) {
+                        let portfolioHtml = '';
+                        if (announcement.portfolio_media && announcement.portfolio_media.length > 0) {
+                            portfolioHtml = `
+                                <h3>Portfólio do Artista</h3>
+                                <div class="portfolio-grid">
+                            `;
+                            announcement.portfolio_media.forEach(media => {
+                                if (media.type === 'image') {
+                                    portfolioHtml += `<img src="${media.src}" alt="${announcement.title} - Portfólio" class="portfolio-item">`;
+                                } else if (media.type === 'video') {
+                                    portfolioHtml += `
+                                        <video controls class="portfolio-item">
+                                            <source src="${media.src}" type="video/mp4">
+                                            Seu navegador não suporta vídeos.
+                                        </video>
+                                    `;
+                                }
+                            });
+                            portfolioHtml += `</div>`;
+                        } else {
+                            portfolioHtml = `<p class="no-portfolio-message">Este artista ainda não possui um portfólio disponível.</p>`;
+                        }
+
+                        detailsContainer.innerHTML = `
+                            <img src="${announcement.imageUrl}" alt="${announcement.title}" class="detail-main-image">
+                            <h2 class="art-nouveau-text detail-title">${announcement.title}</h2>
+                            <p class="detail-description">${announcement.description}</p>
+                            <div class="detail-meta">
+                                <span class="category art-nouveau-tag">Categoria: ${announcement.category}</span>
+                                <span class="price art-nouveau-tag">Preço: ${announcement.price}</span>
+                                ${announcement.artist_name ? `<span class="artist-name art-nouveau-tag">Artista: ${announcement.artist_name}</span>` : ''}
+                            </div>
+                            <div class="portfolio-section">
+                                ${portfolioHtml}
+                            </div>
+                        `;
+                    } else {
+                        detailsContainer.innerHTML = '<p>Anúncio não encontrado.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar detalhes do anúncio:', error);
+                    detailsContainer.innerHTML = '<p>Erro ao carregar os detalhes do anúncio. Por favor, tente novamente.</p>';
+                });
+        });
+    </script>
+</body>
+</html>

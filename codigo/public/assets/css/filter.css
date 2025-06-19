@@ -1,0 +1,206 @@
+/* ==================================== */
+/* ESTILOS DO MÓDULO DE FILTRO E RESULTADOS */
+/* ==================================== */
+
+.filter-search-section {
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.filter-search-section h2 {
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    font-size: 2.2em;
+}
+
+.filter-area {
+    padding: 40px;
+    margin-top: 25px;
+    /* art-nouveau-card já cuida de border-radius, box-shadow etc. */
+}
+
+.filter-area p {
+    font-style: italic;
+    color: var(--color-text);
+    margin-bottom: 25px;
+}
+
+.filter-group {
+    margin-bottom: 25px;
+    text-align: left; /* Alinha o label à esquerda */
+}
+
+.filter-group label {
+    display: block;
+    font-weight: bold;
+    color: var(--color-text);
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.filter-group .art-nouveau-input {
+    width: calc(100% - 40px); /* Ajusta para padding */
+    margin: 0 auto; /* Centraliza */
+    display: block; /* Ocupa sua própria linha */
+}
+
+/* Estilos para o filtro de preço */
+.price-filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza labels e inputs */
+}
+
+.price-range-display {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+}
+
+.price-range-input {
+    width: 90%;
+    margin: 10px 0;
+    -webkit-appearance: none; /* Remove estilo padrão do Chrome/Safari */
+    appearance: none;
+    background: var(--color-secondary);
+    height: 8px;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity .2s;
+    cursor: pointer;
+}
+
+.price-range-input:hover {
+    opacity: 1;
+}
+
+.price-range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    cursor: pointer;
+    border: 2px solid var(--color-background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.price-range-input::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    cursor: pointer;
+    border: 2px solid var(--color-background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Estilos para as tags de categoria */
+.tags-filter-group #tags-filter {
+    margin-top: 15px;
+}
+
+.categoria-group {
+    background-color: var(--color-background); /* Fundo claro para a categoria */
+    border: 1px solid var(--color-secondary);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Esconde as subtags por padrão */
+}
+
+.categoria-title {
+    padding: 15px 20px;
+    background-color: var(--color-primary); /* Cor primária para o título da categoria */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    font-size: 1.1em;
+}
+
+.categoria-title:hover {
+    background-color: var(--color-accent); /* Cor de destaque ao passar o mouse */
+}
+
+.categoria-title::after {
+    content: '\25BC'; /* Seta para baixo */
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.categoria-title.active::after {
+    transform: rotate(-180deg); /* Gira a seta para cima quando ativo */
+}
+
+.subtags {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out; /* Transição suave para abrir/fechar */
+    padding: 0 20px;
+}
+
+.subtags.open {
+    max-height: 500px; /* Um valor grande o suficiente para a altura máxima */
+    padding: 15px 20px; /* Adiciona padding quando aberto */
+}
+
+.subtags div { /* Contêiner de checkbox e label */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.subtags input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2); /* Aumenta um pouco o checkbox */
+    accent-color: var(--color-accent); /* Cor do checkbox quando marcado */
+}
+
+.subtags label {
+    font-weight: normal;
+    font-size: 1em;
+    color: var(--color-text);
+    margin-bottom: 0; /* Remove margem extra do label */
+}
+
+#apply-filters-button {
+    margin-top: 25px;
+    width: auto; /* Deixa o botão se ajustar ao conteúdo */
+    padding: 15px 40px; /* Aumenta o padding para o botão */
+}
+
+/* Container de resultados */
+.results-container-wrapper {
+    margin-top: 60px;
+    border-top: 2px dashed var(--color-secondary);
+    padding-top: 40px;
+}
+
+.results-container-wrapper h3 {
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+/* O #results-container usará as classes de .announcement-grid */
+#results-container {
+    /* Já estilizado por .announcement-grid */
+}
+
+/* Estilo para cards de talento dentro do filtro (se for diferente da grid de anúncios) */
+/* No seu caso, vamos reusar os estilos de .announcement-item e .art-nouveau-card */
+#results-container .announcement-item {
+    /* Use os mesmos estilos de anuncio da grid principal */
+    cursor: pointer; /* Indica que é clicável */
+}
+
+#results-container .announcement-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}

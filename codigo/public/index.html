@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtFlow - Conectando Arte e Produção</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/swipe-module.css">
+    <link rel="stylesheet" href="assets/css/filter.css"> <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -29,7 +30,7 @@
                             <span class="icon-label">Início</span>
                         </a>
                     </li>
-                    <li class="nav-item-quickfinder">
+                    <li class="nav-item-quickfinder" id="toggleSwipeModule">
                         <a href="#" aria-label="Quickfinder">
                             <i class="fas fa-bolt"></i>
                             <span class="icon-label">Quickfinder</span>
@@ -62,10 +63,35 @@
         <div class="container">
             <section class="filter-search-section">
                 <h2 class="art-nouveau-text">Encontre a sua inspiração!</h2>
-                <div class="placeholder-filter-search art-nouveau-card">
+                <div class="filter-area art-nouveau-card">
                     <p>Mergulhe em um universo de possibilidades. Encontre artistas e produtores com fluidez e beleza.</p>
-                    <input type="text" placeholder="Pesquisar obras e talentos..." class="art-nouveau-input">
-                    <button class="art-nouveau-button">Buscar Harmonia</button>
+                    
+                    <div class="filter-group">
+                        <input type="text" id="keyword-filter" placeholder="Pesquisar obras e talentos..." class="art-nouveau-input">
+                    </div>
+
+                    <div class="filter-group price-filter-group">
+                        <label>Preço:</label>
+                        <div class="price-range-display">
+                            <span id="min-value">R$ 0</span> - <span id="max-value">R$ 500</span>
+                        </div>
+                        <input type="range" id="min-price" min="0" max="1000" value="0" class="price-range-input">
+                        <input type="range" id="max-price" min="0" max="1000" value="500" class="price-range-input">
+                    </div>
+
+                    <div class="filter-group tags-filter-group">
+                        <label>Categorias e Subcategorias:</label>
+                        <div id="tags-filter">
+                            </div>
+                    </div>
+                    
+                    <button class="art-nouveau-button" id="apply-filters-button">Buscar Harmonia</button>
+                </div>
+
+                <div class="results-container-wrapper">
+                    <h3 class="art-nouveau-text">Resultados da Busca</h3>
+                    <div class="announcement-grid" id="results-container">
+                        </div>
                 </div>
             </section>
 
@@ -84,16 +110,52 @@
         </div>
     </footer>
 
+    <div class="swipe-module-overlay" id="swipeOverlay"></div>
+    <aside class="swipe-module-sidebar" id="swipeModuleSidebar">
+        <button class="close-swipe-module" id="closeSwipeModule">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="profile-container" id="perfil">
+            <div class="profile-image"></div>
+            <div class="profile-info">
+                <p><strong>Nome</strong>, idade anos | Nota: nota</p>
+                <button onclick="verPreviewPortfolio()" class="art-nouveau-button swipe-portfolio-button">
+                    👁️ Ver Portfolio
+                </button>
+                <div id="portfolio-preview" style="margin-top: 20px; border: 1px solid #ccc; padding: 10px; display: none;"></div>
+            </div>
+
+            <div class="profile-buttons">
+                <img src="assets/img/botoes/cruz.png" alt="Fechar" onclick="dislike()">
+                <img src="assets/img/botoes/estrela.png" alt="Estrela" onclick="superLike()">
+                <img src="assets/img/botoes/raio.png" alt="Relâmpago" onclick="boost()">
+                <img src="assets/img/botoes/verificar.png" alt="check" onclick="like()">
+            </div>
+
+            <div class="footer-buttons">
+                <img src="assets/img/botoes/baloes-de-fala.png" alt="Mensagem" onclick="enviarMensagem()">
+                <img src="assets/img/botoes/atualizar.png" alt="Atualizar" onclick="atualizarPerfil()">
+            </div>
+        </div>
+    </aside>
+
     <script src="assets/js/script.js"></script>
-    <script type="module">
-     
+    <script type="module" src="assets/js/auth.js"></script>
+    <script type="module" src="assets/swipe-module/perfis.js"></script>
+    <script type="module" src="assets/swipe-module/app.js"></script>
+    <script type="module" src="assets/js/filter.js"></script> <script type="module">
+        // Lógica para mostrar/esconder links de Login/Logout e gerenciar logout
         import { isAuthenticated, logoutUser, getCurrentUsername, getUserType } from './assets/js/auth.js';
+        import { carregarPerfilInicial } from './assets/swipe-module/app.js';
 
         document.addEventListener('DOMContentLoaded', () => {
             const navLoginLink = document.getElementById('navLoginLink');
             const navLogoutLink = document.getElementById('navLogoutLink');
             const profileLabel = document.getElementById('profileLabel');
             const profileIconLink = document.getElementById('profileIconLink');
+
+            console.log('isAuthenticated() na inicialização:', isAuthenticated()); // Para debug
 
             if (isAuthenticated()) {
                 navLoginLink.style.display = 'none';
@@ -105,13 +167,12 @@
                 } else {
                     profileLabel.textContent = 'Perfil';
                 }
-                profileIconLink.href = "#"; // Se logado, o link de perfil pode ir para # (ou futura página de perfil)
-
+                profileIconLink.href = "#";
             } else {
                 navLoginLink.style.display = 'list-item';
                 navLogoutLink.style.display = 'none';
                 profileLabel.textContent = 'Perfil';
-                profileIconLink.href = "login.html"; // Se não logado, o link de perfil vai para a página de login
+                profileIconLink.href = "login.html";
             }
 
             navLogoutLink.querySelector('a').addEventListener('click', (e) => {
@@ -119,6 +180,38 @@
                 logoutUser();
                 window.location.href = 'login.html';
             });
+
+            // Lógica para abrir/fechar a sidebar do módulo de swipe
+            const toggleSwipeModuleBtn = document.getElementById('toggleSwipeModule');
+            const swipeModuleSidebar = document.getElementById('swipeModuleSidebar');
+            const swipeOverlay = document.getElementById('swipeOverlay');
+            const closeSwipeModuleBtn = document.getElementById('closeSwipeModule');
+
+            if (toggleSwipeModuleBtn) {
+                toggleSwipeModuleBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    swipeModuleSidebar.classList.add('is-open');
+                    swipeOverlay.classList.add('is-visible');
+                    document.body.style.overflow = 'hidden';
+                    carregarPerfilInicial();
+                });
+            }
+
+            if (closeSwipeModuleBtn) {
+                closeSwipeModuleBtn.addEventListener('click', () => {
+                    swipeModuleSidebar.classList.remove('is-open');
+                    swipeOverlay.classList.remove('is-visible');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            if (swipeOverlay) {
+                swipeOverlay.addEventListener('click', () => {
+                    swipeModuleSidebar.classList.remove('is-open');
+                    swipeOverlay.classList.remove('is-visible');
+                    document.body.style.overflow = '';
+                });
+            }
         });
     </script>
 </body>

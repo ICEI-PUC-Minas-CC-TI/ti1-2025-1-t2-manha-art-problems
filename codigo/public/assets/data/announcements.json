@@ -1,42 +1,79 @@
 [
     {
         "id": "1",
-        "title": "Grafiteiro",
-        "description": "Arte urbana vibrante e expressiva que transforma espaços, utilizando cores e formas para contar histórias e provocar reflexão nas ruas da cidade.",
+        "title": "Grafiteiro Urbano",
+        "description": "Arte urbana vibrante e expressiva que transforma espaços, utilizando cores e formas para contar histórias e provocar reflexão nas ruas da cidade. Especialista em murais de grande escala e personalização de ambientes comerciais.",
         "category": "Artista de Rua (Grafiteiro, Muralista)",
-        "price": "R$ 100,00",
-        "imageUrl": "assets/img/rua.jpeg"
+        "price": 100.00,
+        "price_unit": "/m²",
+        "imageUrl": "assets/img/rua.jpeg",
+        "artist_name": "GraffitiFlow",
+        "tags": ["Artes Visuais", "Artista de Rua (Grafiteiro, Muralista)", "Grafiteiro", "Muralista"],
+        "portfolio_media": [
+            {"type": "image", "src": "assets/img/portfolio-media/grafite_obra1.jpg"},
+            {"type": "video", "src": "assets/img/portfolio-media/grafite_obra2.mp4"},
+            {"type": "image", "src": "assets/img/portfolio-media/grafite_obra3.jpg"}
+        ]
     },
     {
         "id": "2",
-        "title": "Fotógrafo Profissional",
-        "description": "Captura momentos e emoções com sensibilidade, transformando instantes em memórias eternas através de um olhar único e profissional.",
+        "title": "Fotógrafo Profissional de Eventos",
+        "description": "Captura momentos e emoções com sensibilidade, transformando instantes em memórias eternas através de um olhar único e profissional. Especializado em casamentos, eventos corporativos e ensaios de moda.",
         "category": "Fotógrafo",
-        "price": "R$ 540,00",
-        "imageUrl": "assets/img/ohmaga.jpeg"
+        "price": 540.00,
+        "price_unit": "/hora",
+        "imageUrl": "assets/img/ohmaga.jpeg",
+        "artist_name": "FlashMoment",
+        "tags": ["Audiovisual", "Fotógrafo"],
+        "portfolio_media": [
+            {"type": "image", "src": "assets/img/portfolio-media/foto_evento1.jpg"},
+            {"type": "image", "src": "assets/img/portfolio-media/foto_evento2.jpg"},
+            {"type": "video", "src": "assets/img/portfolio-media/foto_evento3.mp4"}
+        ]
     },
     {
         "id": "3",
-        "title": "Escultor em Madeira",
-        "description": "Escultura em madeira de lei, inspirada nas formas fluidas da natureza.",
+        "title": "Escultor em Madeira Abstrata",
+        "description": "Escultura em madeira de lei, inspirada nas formas fluidas da natureza e na arte abstrata moderna. Peças únicas para decoração e coleções particulares. Trabalhos sob encomenda.",
         "category": "Escultor",
-        "price": "R$ 250,00",
-        "imageUrl": "assets/img/Test.jpg"
+        "price": 250.00,
+        "price_unit": "/peça",
+        "imageUrl": "assets/img/Test.jpg",
+        "artist_name": "MadeiraViva",
+        "tags": ["Artes Visuais", "Escultor"],
+        "portfolio_media": [
+            {"type": "image", "src": "assets/img/portfolio-media/escultura_madeira1.jpg"},
+            {"type": "image", "src": "assets/img/portfolio-media/escultura_madeira2.jpg"}
+        ]
     },
     {
         "id": "4",
-        "title": "Técnico de Som",
-        "description": "Expertise em mixagem e masterização, garantindo a qualidade sonora impecável para eventos, gravações e produções audiovisuais, elevando cada nota e palavra ao máximo.",
+        "title": "Técnico de Som Masterizado",
+        "description": "Expertise em mixagem e masterização, garantindo a qualidade sonora impecável para eventos, gravações e produções audiovisuais, elevando cada nota e palavra ao máximo. Com estúdio próprio para produção completa.",
         "category": "Técnico de Som (Mixagem, Captação)",
-        "price": "R$ 400,00",
-        "imageUrl": "assets/img/som.jpeg"
+        "price": 400.00,
+        "price_unit": "/projeto",
+        "imageUrl": "assets/img/som.jpeg",
+        "artist_name": "AudioZen",
+        "tags": ["Audiovisual", "Técnico de Som (Mixagem, Captação)", "Designer de Som"],
+        "portfolio_media": [
+            {"type": "image", "src": "assets/img/portfolio-media/audio_mix.jpg"},
+            {"type": "video", "src": "assets/img/portfolio-media/audio_live.mp4"}
+        ]
     },
     {
         "id": "5",
-        "title": "Música Profissional",
-        "description": " Melodias envolventes e arranjos sofisticados que criam a atmosfera perfeita para qualquer ocasião, do clássico ao contemporâneo.",
+        "title": "Música Profissional - Voz e Violão",
+        "description": "Melodias envolventes e arranjos sofisticados que criam a atmosfera perfeita para qualquer ocasião, do clássico ao contemporâneo. Atua em eventos, bares e projetos autorais. Repertório variado e personalizado.",
         "category": "Músico (Instrumentista, Vocalista)",
-        "price": "R$ 700,00",
-        "imageUrl": "assets/img/musica.jpeg"
+        "price": 700.00,
+        "price_unit": "/apresentação",
+        "imageUrl": "assets/img/musica.jpeg",
+        "artist_name": "HarmonyVoice",
+        "tags": ["Artes Performáticas", "Músico (Instrumentista, Vocalista)"],
+        "portfolio_media": [
+            {"type": "video", "src": "assets/img/portfolio-media/musica_show.mp4"},
+            {"type": "image", "src": "assets/img/portfolio-media/musica_ensaio.jpg"}
+        ]
     }
 ]
