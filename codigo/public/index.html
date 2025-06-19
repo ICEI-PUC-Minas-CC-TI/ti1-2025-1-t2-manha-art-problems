@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtFlow - Conectando Arte e Produção</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/swipe-module.css">
-    <link rel="stylesheet" href="assets/css/filter.css"> <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/swipe-module.css"> <link rel="stylesheet" href="assets/css/filter.css"> <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -140,14 +139,10 @@
         </div>
     </aside>
 
-    <script src="assets/js/script.js"></script>
-    <script type="module" src="assets/js/auth.js"></script>
-    <script type="module" src="assets/swipe-module/perfis.js"></script>
-    <script type="module" src="assets/swipe-module/app.js"></script>
-    <script type="module" src="assets/js/filter.js"></script> <script type="module">
+    <script src="assets/js/script.js"></script> <script type="module" src="assets/js/auth.js"></script> <script type="module" src="assets/swipe-module/perfis.js"></script> <script type="module" src="assets/swipe-module/app.js"></script> <script type="module" src="assets/js/filter.js"></script> <script type="module">
         // Lógica para mostrar/esconder links de Login/Logout e gerenciar logout
         import { isAuthenticated, logoutUser, getCurrentUsername, getUserType } from './assets/js/auth.js';
-        import { carregarPerfilInicial } from './assets/swipe-module/app.js';
+        import { carregarPerfilInicial } from './assets/swipe-module/app.js'; // Importa a função de carregamento inicial do swipe-module
 
         document.addEventListener('DOMContentLoaded', () => {
             const navLoginLink = document.getElementById('navLoginLink');
@@ -155,7 +150,9 @@
             const profileLabel = document.getElementById('profileLabel');
             const profileIconLink = document.getElementById('profileIconLink');
 
-            console.log('isAuthenticated() na inicialização:', isAuthenticated()); // Para debug
+            // --- DEBUG: Para verificar o status de autenticação no console ---
+            console.log('isAuthenticated() na inicialização:', isAuthenticated());
+            // ------------------------------------------------------------------
 
             if (isAuthenticated()) {
                 navLoginLink.style.display = 'none';
@@ -168,6 +165,7 @@
                     profileLabel.textContent = 'Perfil';
                 }
                 profileIconLink.href = "#";
+
             } else {
                 navLoginLink.style.display = 'list-item';
                 navLogoutLink.style.display = 'none';
@@ -181,7 +179,7 @@
                 window.location.href = 'login.html';
             });
 
-            // Lógica para abrir/fechar a sidebar do módulo de swipe
+            // Lógica para abrir/fechar a sidebar do módulo de swipe (Tinder-like)
             const toggleSwipeModuleBtn = document.getElementById('toggleSwipeModule');
             const swipeModuleSidebar = document.getElementById('swipeModuleSidebar');
             const swipeOverlay = document.getElementById('swipeOverlay');
@@ -192,8 +190,8 @@
                     e.preventDefault();
                     swipeModuleSidebar.classList.add('is-open');
                     swipeOverlay.classList.add('is-visible');
-                    document.body.style.overflow = 'hidden';
-                    carregarPerfilInicial();
+                    document.body.style.overflow = 'hidden'; // Impede o scroll da página principal
+                    carregarPerfilInicial(); // Carrega o primeiro perfil ao abrir a sidebar
                 });
             }
 
@@ -201,12 +199,12 @@
                 closeSwipeModuleBtn.addEventListener('click', () => {
                     swipeModuleSidebar.classList.remove('is-open');
                     swipeOverlay.classList.remove('is-visible');
-                    document.body.style.overflow = '';
+                    document.body.style.overflow = ''; // Restaura o scroll
                 });
             }
 
             if (swipeOverlay) {
-                swipeOverlay.addEventListener('click', () => {
+                swipeOverlay.addEventListener('click', () => { // Fecha ao clicar no overlay
                     swipeModuleSidebar.classList.remove('is-open');
                     swipeOverlay.classList.remove('is-visible');
                     document.body.style.overflow = '';
