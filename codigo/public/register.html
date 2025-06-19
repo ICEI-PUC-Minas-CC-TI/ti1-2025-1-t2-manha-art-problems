@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArtFlow - Conectando Arte e Produção</title>
+    <title>ArtFlow - Criar Conta</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/login.css"> <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -35,18 +35,6 @@
                             <span class="icon-label">Quickfinder</span>
                         </a>
                     </li>
-                    <li class="nav-item-login" id="navLoginLink">
-                        <a href="login.html" aria-label="Login">
-                            <i class="fas fa-sign-in-alt"></i>
-                            <span class="icon-label">Login</span>
-                        </a>
-                    </li>
-                    <li class="nav-item-logout" id="navLogoutLink" style="display:none;">
-                        <a href="#" aria-label="Sair">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span class="icon-label">Sair</span>
-                        </a>
-                    </li>
                 </ul>
             </nav>
             <div class="profile-icon">
@@ -58,23 +46,37 @@
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="container">
-            <section class="filter-search-section">
-                <h2 class="art-nouveau-text">Encontre a sua inspiração!</h2>
-                <div class="placeholder-filter-search art-nouveau-card">
-                    <p>Mergulhe em um universo de possibilidades. Encontre artistas e produtores com fluidez e beleza.</p>
-                    <input type="text" placeholder="Pesquisar obras e talentos..." class="art-nouveau-input">
-                    <button class="art-nouveau-button">Buscar Harmonia</button>
-                </div>
-            </section>
-
-            <section class="announcement-section">
-                <h2 class="art-nouveau-text">Obras Recentes em Destaque</h2>
-                <div class="announcement-grid" id="announcement-container">
-                    <p>Carregando anúncios...</p>
-                </div>
-            </section>
+    <main class="main-content login-page"> <div class="container login-container"> <div class="login-card art-nouveau-card"> <h2 class="art-nouveau-text">Crie Sua Conta ArtFlow</h2>
+                <form id="registerForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="registerUsername">Nome de Usuário:</label>
+                        <input type="text" id="registerUsername" class="art-nouveau-input" placeholder="Seu nome de usuário" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email:</label>
+                        <input type="email" id="registerEmail" class="art-nouveau-input" placeholder="seuemail@dominio.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Senha:</label>
+                        <input type="password" id="registerPassword" class="art-nouveau-input" placeholder="Mínimo 6 caracteres" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Senha:</label>
+                        <input type="password" id="confirmPassword" class="art-nouveau-input" placeholder="Confirme sua senha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerUserType">Tipo de Conta:</label>
+                        <select id="registerUserType" class="art-nouveau-input" required>
+                            <option value="">Selecione...</option>
+                            <option value="cliente">Cliente</option>
+                            <option value="artflow">ArtFlow (Artista)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="art-nouveau-button">Registrar Agora</button>
+                    <p id="registerMessage" class="auth-message"></p>
+                </form>
+                <p class="alt-action-text">Já tem uma conta? <a href="login.html" class="art-nouveau-link">Fazer Login</a></p>
+            </div>
         </div>
     </main>
 
@@ -84,20 +86,16 @@
         </div>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/register.js"></script>
     <script type="module">
-     
-        import { isAuthenticated, logoutUser, getCurrentUsername, getUserType } from './assets/js/auth.js';
+       
+        import { isAuthenticated, getCurrentUsername, getUserType } from './assets/js/auth.js';
 
         document.addEventListener('DOMContentLoaded', () => {
-            const navLoginLink = document.getElementById('navLoginLink');
-            const navLogoutLink = document.getElementById('navLogoutLink');
             const profileLabel = document.getElementById('profileLabel');
             const profileIconLink = document.getElementById('profileIconLink');
 
             if (isAuthenticated()) {
-                navLoginLink.style.display = 'none';
-                navLogoutLink.style.display = 'list-item';
                 const username = getCurrentUsername();
                 const userType = getUserType();
                 if (username && userType) {
@@ -105,20 +103,11 @@
                 } else {
                     profileLabel.textContent = 'Perfil';
                 }
-                profileIconLink.href = "#"; // Se logado, o link de perfil pode ir para # (ou futura página de perfil)
-
+                profileIconLink.href = "#";
             } else {
-                navLoginLink.style.display = 'list-item';
-                navLogoutLink.style.display = 'none';
                 profileLabel.textContent = 'Perfil';
-                profileIconLink.href = "login.html"; // Se não logado, o link de perfil vai para a página de login
+                profileIconLink.href = "login.html";
             }
-
-            navLogoutLink.querySelector('a').addEventListener('click', (e) => {
-                e.preventDefault();
-                logoutUser();
-                window.location.href = 'login.html';
-            });
         });
     </script>
 </body>

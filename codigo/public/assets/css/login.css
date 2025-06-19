@@ -1,6 +1,3 @@
-/* ==================================== */
-/* ESTILOS DA PÁGINA DE LOGIN / CADASTRO   */
-/* ==================================== */
 
 .login-page {
     display: flex;
@@ -26,7 +23,7 @@
     font-size: 2em;
 }
 
-.auth-form { /* Alterado de .login-form para .auth-form para abranger ambos */
+.auth-form {
     display: flex;
     flex-direction: column;
     gap: 20px; /* Espaço entre os campos do formulário */
@@ -43,86 +40,65 @@
     color: var(--color-text);
 }
 
-.auth-form .art-nouveau-input { /* Alterado de .login-form para .auth-form */
+.auth-form .art-nouveau-input {
     width: calc(100% - 40px); /* Ajusta a largura para padding e margem */
     margin: 0; /* Remove margem extra do input */
     padding: 15px 20px; /* Garante padding consistente */
     box-sizing: border-box; /* Inclui padding e borda na largura total */
 }
 
-.auth-form .art-nouveau-button { /* Alterado de .login-form para .auth-form */
-    width: 100%; /* Botão ocupa a largura total */
-    margin-top: 10px; /* Espaço acima do botão */
+.auth-form .art-nouveau-button {
+    width: 100%; 
+    margin-top: 10px; 
 }
 
-.auth-message { /* Alterado de .login-message para .auth-message */
+.auth-message {
     margin-top: 20px;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
-    display: none; /* Escondido por padrão, será exibido via JS */
+    display: none; 
 }
 
 .auth-message.success {
-    background-color: #d4edda; /* Verde claro */
-    color: #155724; /* Verde escuro */
+    background-color: #d4edda; 
+    color: #155724; 
     border: 1px solid #c3e6cb;
 }
 
 .auth-message.error {
-    background-color: #f8d7da; /* Vermelho claro */
-    color: #721c24; /* Vermelho escuro */
+    background-color: #f8d7da; 
+    color: #721c24; 
     border: 1px solid #f5c6cb;
 }
 
 /* Estilos para o seletor de tipo de usuário */
 .form-group select.art-nouveau-input {
-    appearance: none; /* Remove estilo padrão do sistema operacional */
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%232f3e46" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Seta personalizada */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%232f3e46" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     background-repeat: no-repeat;
     background-position: right 15px center;
     background-size: 18px;
 }
 
-/* Estilos para o toggle de formulário */
-.form-toggle {
-    display: flex;
-    margin-bottom: 30px;
-    border-radius: 30px;
-    overflow: hidden;
-    border: 1px solid var(--color-secondary);
-}
-
-.form-toggle .art-nouveau-button {
-    flex: 1;
-    margin: 0;
-    border-radius: 0;
-    background-color: transparent;
+/* Estilos para o link de alternância */
+.alt-action-text {
+    margin-top: 25px;
+    font-size: 1.1em;
     color: var(--color-text);
-    box-shadow: none;
-    font-weight: normal;
-    padding: 12px 20px;
-    transition: all 0.3s ease;
 }
 
-.form-toggle .art-nouveau-button.toggle-active {
-    background-color: var(--color-accent);
-    color: white;
+.art-nouveau-link {
+    color: var(--color-accent);
+    text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.form-toggle .art-nouveau-button:first-child {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+.art-nouveau-link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
 }
 
-.form-toggle .art-nouveau-button:last-child {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-}
-
-.form-toggle .art-nouveau-button:hover:not(.toggle-active) {
-    background-color: rgba(0,0,0,0.05);
-}
