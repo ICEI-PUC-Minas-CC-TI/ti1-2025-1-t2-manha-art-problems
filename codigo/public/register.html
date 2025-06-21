@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtFlow - Criar Conta</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/login.css"> <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -15,7 +16,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <h1 class="logo art-nouveau-text">ArtFlow</h1>
-            <nav class="nav-icons">
+            <nav class="nav-icons" id="headerNav">
                 <ul>
                     <li class="nav-item-compras">
                         <a href="#" aria-label="Minhas Compras">
@@ -29,15 +30,33 @@
                             <span class="icon-label">Início</span>
                         </a>
                     </li>
-                    <li class="nav-item-quickfinder">
+                    <li class="nav-item-quickfinder" id="toggleSwipeModule">
                         <a href="#" aria-label="Quickfinder">
                             <i class="fas fa-bolt"></i>
                             <span class="icon-label">Quickfinder</span>
                         </a>
                     </li>
+                    <li class="nav-item-saved" id="navSavedLink" style="display:none;">
+                        <a href="saved-profiles.html" aria-label="Perfis Salvos">
+                            <i class="fas fa-bookmark"></i>
+                            <span class="icon-label">Salvos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-login" id="navLoginLink">
+                        <a href="login.html" aria-label="Login">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span class="icon-label">Login</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-logout" id="navLogoutLink" style="display:none;">
+                        <a href="#" aria-label="Sair">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span class="icon-label">Sair</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
-            <div class="profile-icon">
+            <div class="profile-icon" id="headerProfile">
                 <a href="#" aria-label="Meu Perfil" id="profileIconLink">
                     <i class="fas fa-user-circle"></i>
                     <span class="icon-label" id="profileLabel">Perfil</span>
@@ -46,7 +65,10 @@
         </div>
     </header>
 
-    <main class="main-content login-page"> <div class="container login-container"> <div class="login-card art-nouveau-card"> <h2 class="art-nouveau-text">Crie Sua Conta ArtFlow</h2>
+    <main class="main-content login-page">
+        <div class="container login-container">
+            <div class="login-card art-nouveau-card">
+                <h2 class="art-nouveau-text">Crie Sua Conta ArtFlow</h2>
                 <form id="registerForm" class="auth-form">
                     <div class="form-group">
                         <label for="registerUsername">Nome de Usuário:</label>
@@ -88,14 +110,18 @@
 
     <script type="module" src="assets/js/register.js"></script>
     <script type="module">
-       
         import { isAuthenticated, getCurrentUsername, getUserType } from './assets/js/auth.js';
 
         document.addEventListener('DOMContentLoaded', () => {
             const profileLabel = document.getElementById('profileLabel');
             const profileIconLink = document.getElementById('profileIconLink');
+            const navSavedLink = document.getElementById('navSavedLink'); // NOVO: Link de Salvos
 
+            // --- Lógica de visibilidade dos links de Login/Logout/Salvos ---
             if (isAuthenticated()) {
+                // Aqui não deveria ter navLoginLink/navLogoutLink, pois é a página de registro
+                // Mas garantimos que o link 'Salvos' apareça
+                navSavedLink.style.display = 'list-item'; // MOSTRAR Link de Salvos
                 const username = getCurrentUsername();
                 const userType = getUserType();
                 if (username && userType) {
@@ -104,9 +130,20 @@
                     profileLabel.textContent = 'Perfil';
                 }
                 profileIconLink.href = "#";
+
             } else {
+                navSavedLink.style.display = 'none'; // ESCONDER Link de Salvos
                 profileLabel.textContent = 'Perfil';
                 profileIconLink.href = "login.html";
+            }
+
+            // --- NOVO: Lógica para o botão Quickfinder (Redirecionar para index.html) ---
+            const toggleSwipeModuleBtn = document.getElementById('toggleSwipeModule');
+            if (toggleSwipeModuleBtn) {
+                toggleSwipeModuleBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Impede o comportamento padrão do link
+                    window.location.href = 'index.html'; // Redireciona para a homepage
+                });
             }
         });
     </script>

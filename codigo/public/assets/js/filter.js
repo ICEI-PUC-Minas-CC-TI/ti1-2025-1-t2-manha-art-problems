@@ -53,9 +53,8 @@ const resultsContainer = document.getElementById('results-container');
 const keywordInput = document.getElementById('keyword-filter');
 const applyFiltersButton = document.getElementById('apply-filters-button');
 
-let allAnnouncements = []; // Para armazenar todos os anúncios carregados
+let allAnnouncements = [];
 
-// Função para buscar os anúncios (talentos)
 async function fetchAnnouncementsForFilter() {
     try {
         const response = await fetch('assets/data/announcements.json');
@@ -63,7 +62,6 @@ async function fetchAnnouncementsForFilter() {
             throw new Error(`Erro ao carregar anúncios para filtro: ${response.status} ${response.statusText}`);
         }
         allAnnouncements = await response.json();
-        // Inicializa os resultados com todos os anúncios
         mostrarTalentos(allAnnouncements);
     } catch (error) {
         console.error('Ocorreu um erro ao buscar os anúncios para filtro:', error);
@@ -91,7 +89,7 @@ function gerarFiltrosDeTags() {
         categoria.subtags.forEach(subtag => {
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
-            checkbox.id = `tag-${subtag.replace(/ /g, '-').replace(/[()]/g, '')}`; // Remove parênteses para ID válido
+            checkbox.id = `tag-${subtag.replace(/ /g, '-').replace(/[()]/g, '')}`;
             checkbox.name = 'tag';
             checkbox.value = subtag;
 
@@ -124,8 +122,8 @@ function mostrarTalentos(listaTalentos) {
 
     listaTalentos.forEach(talento => {
         const talentoCard = document.createElement('div');
-        talentoCard.classList.add('announcement-item', 'art-nouveau-card'); // Reusa classes existentes
-        talentoCard.dataset.id = talento.id; // Adiciona ID para clique
+        talentoCard.classList.add('announcement-item', 'art-nouveau-card');
+        talentoCard.dataset.id = talento.id;
 
         talentoCard.innerHTML = `
             <img src="${talento.imageUrl}" alt="${talento.title}" class="announcement-image">
@@ -155,11 +153,8 @@ function filtrarResultados() {
         const descriptionLower = announcement.description.toLowerCase();
         const priceValido = announcement.price >= minPrice && announcement.price <= maxPrice;
 
-        // Verifica se a palavra-chave está no título ou descrição
         const keywordValida = keyword === '' || titleLower.includes(keyword) || descriptionLower.includes(keyword);
 
-        // Verifica se TODAS as tags selecionadas estão presentes nas tags do anúncio
-        // Se nenhuma tag estiver selecionada, tagsValidas é true por padrão (todos os anúncios são válidos por tag)
         const tagsValidas = selectedTags.length === 0 || selectedTags.every(tag => announcement.tags.includes(tag));
         
         return priceValido && keywordValida && tagsValidas;
@@ -168,21 +163,30 @@ function filtrarResultados() {
     mostrarTalentos(resultadosFiltrados);
 }
 
-// Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     gerarFiltrosDeTags();
     atualizarValoresPreco();
-    fetchAnnouncementsForFilter(); // Carrega os anúncios para o filtro
+    fetchAnnouncementsForFilter();
 
-    // Adiciona ouvintes de evento para os inputs de preço
-    minPriceInput.addEventListener('input', atualizarValoresPreco);
-    maxPriceInput.addEventListener('input', atualizarValoresPreco);
+    minPriceInput.addEventListener('input', () => {
+        if (parseInt(minPriceInput.value) > parseInt(maxPriceInput.value)) {
+            maxPriceInput.value = minPriceInput.value;
+        }
+        atualizarValoresPreco();
+        filtrarResultados();
+    });
 
-    // Adiciona ouvintes de evento para acionar o filtro
-    keywordInput.addEventListener('input', filtrarResultados); // Filtra em tempo real na digitação
-    applyFiltersButton.addEventListener('click', filtrarResultados); // Botão "Buscar Harmonia"
+    maxPriceInput.addEventListener('input', () => {
+        if (parseInt(maxPriceInput.value) < parseInt(minPriceInput.value)) {
+            minPriceInput.value = maxPriceInput.value;
+        }
+        atualizarValoresPreco();
+        filtrarResultados();
+    });
+
+    keywordInput.addEventListener('input', filtrarResultados);
+    applyFiltersButton.addEventListener('click', filtrarResultados);
     
-    // Adiciona ouvintes para todos os checkboxes de tags (para filtrar ao clicar na tag)
     tagsFilterDiv.addEventListener('change', (event) => {
         if (event.target.type === 'checkbox' && event.target.name === 'tag') {
             filtrarResultados();
