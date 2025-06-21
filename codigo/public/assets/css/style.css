@@ -1,24 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-/* Cores Art Nouveau */
+/* ==================================== */
+/* 0. VARIÁVEIS            */
+/* ==================================== */
 :root {
-    --color-primary: #4a6c6d; 
-    --color-secondary: #8c8c7c; 
-    --color-accent: #b08d57; 
-    --color-background: #fdfaf6; 
-    --color-text: #2f3e46; 
+    --color-primary: #4a6c6d;
+    --color-secondary: #8c8c7c;
+    --color-accent: #b08d57;
+    --color-background: #fdfaf6;
+    --color-text: #2f3e46;
     --color-light-background: #e6e3d2;
 
-    /* Cores do cabeçalho baseadas na imagem */
-    --header-bg-color: #3b5a5b; 
-    --header-item-bg-color: #4a6c6d; 
-    --header-icon-color: #fdfaf6; 
-    --header-logo-color: #b08d57; 
+    --header-bg-color: #3b5a5b;
+    --header-item-bg-color: #4a6c6d;
+    --header-icon-color: #fdfaf6;
+    --header-logo-color: #b08d57;
 }
 
-/* Estilos Gerais */
+/* ==================================== */
+/* 1. ESTILOS BASE / GERAIS   */
+/* ==================================== */
 body {
-    font-family: 'Playfair Display', serif; 
+    font-family: 'Playfair Display', serif;
     margin: 0;
     padding: 0;
     background-color: var(--color-background);
@@ -29,35 +32,66 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 30px; 
+    padding: 0 30px;
 }
 
-/* Fontes com estilo Art Nouveau */
+/* ==================================== */
+/* 2. TIPOGRAFIA            */
+/* ==================================== */
 .art-nouveau-text {
-    font-family: 'Marcellus SC', serif; 
-    font-weight: normal; 
+    font-family: 'Marcellus SC', serif;
+    font-weight: normal;
     letter-spacing: 1px;
 }
 
+/* ==================================== */
+/* 3. LAYOUT               */
+/* ==================================== */
+
 /* Header */
 .header {
-    background-color: var(--header-bg-color); 
-    padding: 0; 
+    background-color: var(--header-bg-color);
+    padding: 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     position: relative;
     z-index: 10;
-    display: flex; 
-    height: 70px; 
-    align-items: stretch; 
+    display: flex;
+    height: 70px;
+    align-items: stretch;
 }
 
-.header-content { 
+.header-content {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    width: 100%; 
-    padding: 0; 
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0;
 }
+
+/* Main Content */
+.main-content {
+    padding: 60px 0;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(to left, var(--color-primary), var(--color-secondary));
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 60px;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+}
+
+.footer p {
+    margin: 0;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ==================================== */
+/* 4. COMPONENTES            */
+/* ==================================== */
 
 /* Menu Hamburger */
 .hamburger-menu {
@@ -65,14 +99,14 @@ body {
     border: none;
     color: var(--header-icon-color);
     font-size: 1.8em;
-    padding: 0 20px; 
+    padding: 0 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%; 
+    height: 100%;
     transition: background-color 0.3s ease;
-    border-right: 1px solid rgba(0,0,0,0.1); 
+    border-right: 1px solid rgba(0,0,0,0.1);
 }
 
 .hamburger-menu:hover {
@@ -82,23 +116,22 @@ body {
 /* Logo */
 .header .logo {
     margin: 0;
-    font-size: 2.5em; 
-    color: var(--header-logo-color); 
-    text-shadow: none; 
+    font-size: 2.5em;
+    color: var(--header-logo-color);
+    text-shadow: none;
     display: flex;
     align-items: center;
-    padding: 0 20px; 
-    border-right: 1px solid rgba(0,0,0,0.1); 
+    padding: 0 20px;
+    border-right: 1px solid rgba(0,0,0,0.1);
 }
-
 
 /* Ícones de Navegação Central */
 .nav-icons {
-    flex-grow: 1; 
+    flex-grow: 1;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
-    height: 100%; 
+    height: 100%;
 }
 
 .nav-icons ul {
@@ -114,7 +147,6 @@ body {
     height: 100%;
     display: flex;
     align-items: stretch;
-
 }
 
 .nav-icons ul li a {
@@ -122,12 +154,12 @@ body {
     text-decoration: none;
     font-size: 1.2em;
     display: flex;
-    align-items: center; 
-    padding: 0 25px; 
+    align-items: center;
+    padding: 0 25px;
     height: 100%;
     transition: background-color 0.3s ease;
-    border-right: 1px solid rgba(0,0,0,0.1); 
-    border-left: 1px solid rgba(255,255,255,0.05); 
+    border-right: 1px solid rgba(0,0,0,0.1);
+    border-left: 1px solid rgba(255,255,255,0.05);
 }
 
 .nav-icons ul li:first-child a {
@@ -139,9 +171,8 @@ body {
 }
 
 .nav-icons ul li a i {
-    font-size: 1.5em; 
+    font-size: 1.5em;
 }
-
 
 .icon-label {
     display: none;
@@ -150,7 +181,8 @@ body {
 .nav-item-compras { order: 1; }
 .nav-item-inicio { order: 2; }
 .nav-item-quickfinder { order: 3; }
-
+.nav-item-login { order: 4; }
+.nav-item-logout { order: 5; }
 
 /* Perfil */
 .profile-icon {
@@ -158,7 +190,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
-    border-left: 1px solid rgba(255,255,255,0.05); 
+    border-left: 1px solid rgba(255,255,255,0.05);
 }
 
 .profile-icon a {
@@ -181,10 +213,6 @@ body {
     font-size: 1.5em;
 }
 
-.main-content {
-    padding: 60px 0;
-}
-
 /* Card base para seções e itens */
 .art-nouveau-card {
     background-color: var(--color-light-background);
@@ -200,30 +228,7 @@ body {
     transform: translateY(-5px);
 }
 
-/* Seção de Filtro e Pesquisa */
-.filter-search-section {
-    margin-bottom: 60px;
-    text-align: center;
-}
-
-.filter-search-section h2 {
-    color: var(--color-primary);
-    margin-bottom: 30px;
-    font-size: 2.2em;
-}
-
-.placeholder-filter-search {
-    border: 2px dashed var(--color-accent);
-    padding: 40px;
-    margin-top: 25px;
-}
-
-.placeholder-filter-search p {
-    font-style: italic;
-    color: var(--color-text);
-    margin-bottom: 25px;
-}
-
+/* Inputs e Botões */
 .art-nouveau-input {
     width: 70%;
     padding: 15px 20px;
@@ -261,6 +266,10 @@ body {
 }
 
 /* Seção de Anúncios */
+.announcement-section {
+    margin-top: 60px; /* Adicionado para espaçar da seção de filtro */
+}
+
 .announcement-section h2 {
     text-align: center;
     color: var(--color-primary);
@@ -279,6 +288,12 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer; /* Indica que o anúncio é clicável */
+}
+
+.announcement-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 .announcement-item h3 {
@@ -338,21 +353,41 @@ body {
 .announcement-item .announcement-image {
     max-width: 100%;
     height: auto;
-    border-radius: 5px; 
+    border-radius: 5px;
     margin-bottom: 15px;
-    display: block; 
+    display: block;
 }
 
 .announcement-item .announcement-meta {
-    margin-top: auto; 
+    margin-top: auto;
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     gap: 8px;
-    padding-top: 10px; 
-    border-top: 1px dashed rgba(0,0,0,0.1); 
+    padding-top: 10px;
+    border-top: 1px dashed rgba(0,0,0,0.1);
 }
 
-.announcement-item.placeholder {
-    border: 2px dashed var(--color-accent);
-    background-color: var(--color-background);
+/* Estilos para a notificação personalizada */
+.custom-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(var(--color-primary), 0.9); /* Usando a cor primária do tema */
+    color: var(--color-light-text);
+    padding: 15px 25px;
+    border-radius: 10px;
+    z-index: 1100; /* Acima do sidebar e overlay */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s ease-in-out 0.3s; /* Delay para esconder */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.custom-notification.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0s ease-in-out 0s; /* Sem delay para mostrar */
 }

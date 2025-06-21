@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtFlow - Perfis Salvos</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/saved-profiles.css"> <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <button class="hamburger-menu" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="logo art-nouveau-text">ArtFlow</h1>
+            <nav class="nav-icons">
+                <ul>
+                    <li class="nav-item-compras">
+                        <a href="#" aria-label="Minhas Compras">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="icon-label">Compras</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-inicio">
+                        <a href="index.html" aria-label="Página Inicial">
+                            <i class="fas fa-home"></i>
+                            <span class="icon-label">Início</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-quickfinder">
+                        <a href="#" aria-label="Quickfinder">
+                            <i class="fas fa-bolt"></i>
+                            <span class="icon-label">Quickfinder</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-saved" id="navSavedLink">
+                        <a href="saved-profiles.html" aria-label="Perfis Salvos">
+                            <i class="fas fa-bookmark"></i>
+                            <span class="icon-label">Salvos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-login" id="navLoginLink" style="display:none;">
+                        <a href="login.html" aria-label="Login">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span class="icon-label">Login</span>
+                        </a>
+                    </li>
+                    <li class="nav-item-logout" id="navLogoutLink" style="display:none;">
+                        <a href="#" aria-label="Sair">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span class="icon-label">Sair</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="profile-icon">
+                <a href="#" aria-label="Meu Perfil" id="profileIconLink">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="icon-label" id="profileLabel">Perfil</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="saved-profiles-section">
+                <h2 class="art-nouveau-text">Seus Perfis Salvos</h2>
+                <div id="savedProfilesGrid" class="saved-profiles-grid">
+                    <p>Carregando perfis salvos...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="art-nouveau-text">&copy; 2025 ArtFlow - Onde a arte encontra seu fluxo.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="assets/js/auth.js"></script>
+    <script type="module">
+        import { isAuthenticated, logoutUser, getCurrentUsername, getUserType, getSavedProfiles } from './assets/js/auth.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLoginLink = document.getElementById('navLoginLink');
+            const navLogoutLink = document.getElementById('navLogoutLink');
+            const navSavedLink = document.getElementById('navSavedLink');
+            const profileLabel = document.getElementById('profileLabel');
+            const profileIconLink = document.getElementById('profileIconLink');
+            const savedProfilesGrid = document.getElementById('savedProfilesGrid');
+
+            // Lógica de visibilidade do cabeçalho
+            if (isAuthenticated()) {
+                navLoginLink.style.display = 'none';
+                navLogoutLink.style.display = 'list-item';
+                navSavedLink.style.display = 'list-item';
+                const username = getCurrentUsername();
+                const userType = getUserType();
+                if (username && userType) {
+                    profileLabel.textContent = `${username} (${userType.charAt(0).toUpperCase() + userType.slice(1)})`;
+                } else {
+                    profileLabel.textContent = 'Perfil';
+                }
+                profileIconLink.href = "#";
+            } else {
+                // Redireciona para o login se não estiver autenticado
+                window.location.href = 'login.html';
+                return; // Impede que o resto do script seja executado
+            }
+
+            navLogoutLink.querySelector('a').addEventListener('click', (e) => {
+                e.preventDefault();
+                logoutUser();
+                window.location.href = 'login.html';
+            });
+
+            // Lógica para carregar e exibir os perfis salvos
+            const currentUser = getCurrentUsername();
+            if (currentUser) {
+                const savedProfiles = getSavedProfiles(currentUser);
+                displaySavedProfiles(savedProfiles);
+            } else {
+                savedProfilesGrid.innerHTML = '<p>Você precisa estar logado para ver seus perfis salvos.</p>';
+            }
+
+            function displaySavedProfiles(profiles) {
+                savedProfilesGrid.innerHTML = ''; // Limpa o conteúdo
+                if (profiles.length === 0) {
+                    savedProfilesGrid.innerHTML = '<p>Você ainda não salvou nenhum perfil.</p>';
+                    return;
+                }
+
+                profiles.forEach(profile => {
+                    const profileCard = document.createElement('div');
+                    profileCard.classList.add('saved-profile-card');
+                    profileCard.innerHTML = `
+                        <div class="profile-thumbnail-container">
+                            <img src="${profile.imagem}" alt="${profile.nome}" class="profile-thumbnail">
+                        </div>
+                        <div class="profile-info-area">
+                            <h3 class="profile-name">${profile.nome}</h3>
+                            <p class="profile-profession">${profile.profession || profile.type || 'Profissão Indefinida'}</p>
+                            <button class="chat-button art-nouveau-button" data-profile-name="${profile.nome}">Chat</button>
+                        </div>
+                    `;
+                    savedProfilesGrid.appendChild(profileCard);
+                });
+
+                // Adiciona listeners para os botões de chat
+                savedProfilesGrid.querySelectorAll('.chat-button').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const profileName = e.target.dataset.profileName;
+                        alert(`Iniciando chat com ${profileName}! (Redirecionando para o Chat)`);
+                        window.location.href = 'chat.html';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

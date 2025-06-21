@@ -7,12 +7,13 @@ const AUTH_KEY = 'isAuthenticated';
 const CURRENT_USER_KEY = 'currentUser';
 const USER_TYPE_KEY = 'userType';
 
-// CORRIGIDO: Adicionado 'export' à função getUsers
+// Função auxiliar para obter todos os usuários registrados
 export function getUsers() {
     const usersJson = localStorage.getItem(STORAGE_KEY);
     return usersJson ? JSON.parse(usersJson) : [];
 }
 
+// Função auxiliar para salvar a lista completa de usuários registrados
 function saveUsers(users) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
 }
@@ -57,9 +58,6 @@ export function registerUser(username, email, password, type) {
         setTimeout(() => {
             const users = getUsers();
 
-            // Removida a validação específica de domínio @roberto.com
-            // A validação de formato de email (ex: conter @, .com) será feita no frontend (register.js)
-
             // Verifica se username ou email já existem
             const existingUser = users.find(u => u.username === username || u.email === email);
             if (existingUser) {
@@ -67,7 +65,8 @@ export function registerUser(username, email, password, type) {
                 return;
             }
 
-            const newUser = { username, email, password, type };
+            // NOVO: Adicionado array 'savedProfiles' vazio para novos usuários
+            const newUser = { username, email, password, type, savedProfiles: [] };
             users.push(newUser);
             saveUsers(users);
 
@@ -106,13 +105,64 @@ export function getCurrentUsername() {
 }
 
 /**
+ * NOVO: Salva um perfil para o usuário logado atualmente.
+ * @param {string} username O nome de usuário logado.
+ * @param {Object} profile O objeto do perfil a ser salvo.
+ * @returns {boolean} True se salvo com sucesso, false caso contrário (ex: já salvo).
+ */
+export function saveProfileForUser(username, profile) {
+    const users = getUsers();
+    const userIndex = users.findIndex(u => u.username === username);
+
+    if (userIndex !== -1) {
+        // Inicializa savedProfiles se não existir
+        if (!users[userIndex].savedProfiles) {
+            users[userIndex].savedProfiles = [];
+        }
+
+        // Verifica se o perfil já foi salvo para evitar duplicatas (ex: pelo nome ou ID)
+        const isAlreadySaved = users[userIndex].savedProfiles.some(
+            p => p.id === profile.id // Usa o ID para verificar duplicatas
+        );
+
+        if (!isAlreadySaved) {
+            // Salva apenas os dados essenciais para o perfil salvo
+            const savedProfileData = {
+                id: profile.id, // ID único do perfil
+                nome: profile.nome,
+                imagem: profile.imagem,
+                profession: profile.profession || profile.type || 'Artista', // Prioriza profissão, senão tipo, senão genérico
+            };
+            users[userIndex].savedProfiles.push(savedProfileData);
+            saveUsers(users);
+            console.log(`Perfil ${profile.nome} salvo para ${username}.`);
+            return true;
+        } else {
+            console.log(`Perfil ${profile.nome} já estava salvo para ${username}.`);
+            return false;
+        }
+    }
+    return false; // Usuário não encontrado
+}
+
+/**
+ * NOVO: Obtém os perfis salvos para o usuário logado atualmente.
+ * @param {string} username O nome de usuário logado.
+ * @returns {Array} Um array de perfis salvos.
+ */
+export function getSavedProfiles(username) {
+    const users = getUsers();
+    const user = users.find(u => u.username === username);
+    return user ? (user.savedProfiles || []) : [];
+}
+
+
+/**
  * Realiza o logout do usuário.
  */
 export function logoutUser() {
     localStorage.removeItem(AUTH_KEY);
     localStorage.removeItem(CURRENT_USER_KEY);
     localStorage.removeItem(USER_TYPE_KEY);
-    // Limpar o array de usuários registrados se quiser que eles sumam após o refresh.
-    // Para manter os registros, não remova STORAGE_KEY.
-    // localStorage.removeItem(STORAGE_KEY); // Descomente se quiser limpar TODOS os registros no logout
+    // IMPORTANTE: Não remova STORAGE_KEY aqui para manter os registros e perfis salvos
 }
