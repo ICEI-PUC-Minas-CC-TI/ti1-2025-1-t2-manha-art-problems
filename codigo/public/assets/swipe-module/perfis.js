@@ -7,7 +7,7 @@ export const listaDePerfisBase = [
         nota: 9.8,
         imagem: "assets/img/perfis/pessoa1.png",
         portfolioPreview: "assets/portfolio/ana-preview.html",
-        isFixed: true // Indica que é um perfil fixo/de teste
+        isFixed: true
     },
     {
         nome: "Carlos",

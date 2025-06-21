@@ -1,35 +1,31 @@
 // public/assets/swipe-module/app.js
-import { listaDePerfisBase } from './perfis.js'; // Importa os perfis base
-import { getUsers, isAuthenticated, getUserType } from '../js/auth.js'; // Importa getUsers do auth.js (agora exportado!)
+import { listaDePerfisBase } from './perfis.js';
+import { getUsers, isAuthenticated, getUserType } from '../js/auth.js';
 
 let indiceAtual = 0;
-let listaDePerfisCompleta = []; // Lista que vai combinar perfis base e perfis criados
+let listaDePerfisCompleta = [];
 
-// Função para formatar usuários do localStorage para o formato de perfil
 function formatarUsuarioParaPerfil(usuario) {
-    // Você pode criar uma imagem padrão para usuários criados ou baseada no tipo
     const defaultImage = usuario.type === 'artflow' ? 'assets/img/default-artflow.png' : 'assets/img/default-user.png';
     return {
         nome: usuario.username,
-        idade: 'Idade Indef.', // Não temos idade no registro, pode ser adicionado depois
-        nota: 'Nota Indef.', // Não temos nota no registro
+        idade: 'Idade Indef.',
+        nota: 'Nota Indef.',
         imagem: defaultImage,
-        portfolioPreview: `assets/portfolio/default-portfolio-preview.html?user=${usuario.username}`, // Link genérico ou dinâmico
-        isRegisteredUser: true, // Flag para identificar que é um usuário registrado
+        portfolioPreview: `assets/portfolio/default-portfolio-preview.html?user=${usuario.username}`,
+        isRegisteredUser: true,
         type: usuario.type
     };
 }
 
-// Função para combinar perfis base e usuários registrados
 function carregarListaDePerfis() {
-    const usuariosRegistrados = getUsers(); // Obtém usuários do localStorage
+    const usuariosRegistrados = getUsers();
     const perfisDeUsuarios = usuariosRegistrados
-        .filter(user => user.type === 'artflow') // Filtra apenas artistas para o swipe, se desejar
+        .filter(user => user.type === 'artflow')
         .map(formatarUsuarioParaPerfil);
 
     listaDePerfisCompleta = [...listaDePerfisBase, ...perfisDeUsuarios];
 
-    // Se não houver perfis, adicione um perfil "vazio" ou de mensagem
     if (listaDePerfisCompleta.length === 0) {
         listaDePerfisCompleta.push({
             nome: "Nenhum Perfil Disponível",
@@ -41,7 +37,7 @@ function carregarListaDePerfis() {
         });
     }
 
-    // Embaralha a lista para que a ordem não seja sempre a mesma (opcional)
+    // Opcional: Embaralha a lista para que a ordem não seja sempre a mesma
     // for (let i = listaDePerfisCompleta.length - 1; i > 0; i--) {
     //     const j = Math.floor(Math.random() * (i + 1));
     //     [listaDePerfisCompleta[i], listaDePerfisCompleta[j]] = [listaDePerfisCompleta[j], listaDePerfisCompleta[i]];
@@ -49,15 +45,18 @@ function carregarListaDePerfis() {
 }
 
 
-// Função para carregar perfil atual na UI
 function carregarPerfil(perfil) {
-    const profileImage = document.querySelector('.profile-image');
-    const profileInfo = document.querySelector('.profile-info');
+    const perfilElement = document.getElementById('perfil'); // Pega o container do perfil
+    const profileImage = perfilElement.querySelector('.profile-image');
+    const profileInfo = perfilElement.querySelector('.profile-info');
     const portfolioPreview = document.getElementById("portfolio-preview");
-    const swipePortfolioButton = document.querySelector('.swipe-portfolio-button');
+    const swipePortfolioButton = perfilElement.querySelector('.swipe-portfolio-button');
+
+    // Remove a classe de animação para resetar a animação
+    perfilElement.classList.remove('fade-in-scale');
 
     if (perfil.isEmpty) {
-        profileImage.style.background = `url('assets/img/default-empty.png') center center / cover no-repeat`; // Imagem para "vazio"
+        profileImage.style.background = `url('assets/img/default-empty.png') center center / cover no-repeat`;
         profileInfo.innerHTML = `
             <p><strong>${perfil.nome}</strong></p>
             <p>Cadastre-se ou crie um perfil de artista para ver mais!</p>
@@ -72,25 +71,27 @@ function carregarPerfil(perfil) {
         if(swipePortfolioButton) swipePortfolioButton.style.display = 'inline-block';
     }
 
-
     portfolioPreview.style.display = 'none';
     portfolioPreview.innerHTML = '';
+
+    // Adiciona a classe de animação após um pequeno delay para garantir que o DOM seja atualizado
+    // Isso "reinicia" a animação
+    requestAnimationFrame(() => {
+        perfilElement.classList.add('fade-in-scale');
+    });
 }
 
-// Exporta esta função para ser chamada de index.html
 export function carregarPerfilInicial() {
-    carregarListaDePerfis(); // Garante que a lista esteja atualizada
-    indiceAtual = 0; // Sempre começa do primeiro perfil ao abrir
+    carregarListaDePerfis();
+    indiceAtual = 0;
     if (listaDePerfisCompleta.length > 0) {
         carregarPerfil(listaDePerfisCompleta[indiceAtual]);
     } else {
-        // Lida com o caso de não haver perfis
         carregarPerfil({isEmpty: true, nome: "Nenhum Perfil Disponível"});
     }
 }
 
 
-// Funções de interação (like, dislike, superLike, boost)
 function boost() {
     const perfil = document.getElementById('perfil');
     perfil.style.animation = 'shake 0.5s ease-in-out';
@@ -104,7 +105,7 @@ function superLike() {
     perfil.style.transform = 'scale(1.1)';
     setTimeout(() => {
         perfil.style.transform = '';
-        proximoPerfil(); // Carrega o próximo perfil após o superLike
+        proximoPerfil();
     }, 500);
 }
 
@@ -134,13 +135,11 @@ function dislike() {
     }, 500);
 }
 
-// Carrega próximo perfil
 function proximoPerfil() {
     indiceAtual = (indiceAtual + 1) % listaDePerfisCompleta.length;
     carregarPerfil(listaDePerfisCompleta[indiceAtual]);
 }
 
-// Visualizar preview do portfólio
 function verPreviewPortfolio() {
     const perfilAtual = listaDePerfisCompleta[indiceAtual];
     const container = document.getElementById("portfolio-preview");
@@ -166,20 +165,17 @@ function verPreviewPortfolio() {
 }
 
 function atualizarPerfil(){
-    // Recarrega a lista de perfis completa (incluindo novos usuários)
     carregarListaDePerfis();
-    indiceAtual = 0; // Opcional: reiniciar do primeiro perfil após atualizar
+    indiceAtual = 0;
     carregarPerfil(listaDePerfisCompleta[indiceAtual]);
 }
 
 function enviarMensagem() {
     const perfilAtual = listaDePerfisCompleta[indiceAtual];
-    // Em uma aplicação real, você passaria o ID ou nome do perfil para a página de chat
     alert(`Enviando mensagem para ${perfilAtual.nome}! (Redirecionando para o Chat)`);
-    window.location.href = "chat.html"; // Redireciona para a página de chat
+    window.location.href = "chat.html";
 }
 
-// Torna as funções globais para o HTML poder chamá-las via onclick
 window.boost = boost;
 window.superLike = superLike;
 window.like = like;
