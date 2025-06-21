@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Anúncio - ArtFlow</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/announcement-detail.css"> <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/announcement-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -63,6 +64,15 @@
             <div id="announcement-details" class="art-nouveau-card">
                 <p>Carregando detalhes do anúncio...</p>
             </div>
+
+            <section class="comments-section art-nouveau-card">
+                <h3 class="art-nouveau-text">Comentários</h3>
+                <div id="comments-list">
+                    <p>Nenhum comentário ainda. Seja o primeiro a comentar!</p>
+                </div>
+                <div id="comment-form-section">
+                    </div>
+            </section>
         </div>
     </main>
 
@@ -73,9 +83,10 @@
     </footer>
 
     <script type="module" src="assets/js/auth.js"></script>
-    <script type="module">
-        // Lógica para mostrar/esconder links de Login/Logout (copiado de index.html para consistência)
+    <script type="module" src="assets/js/comments.js"></script> <script type="module">
+        
         import { isAuthenticated, logoutUser, getCurrentUsername, getUserType } from './assets/js/auth.js';
+        import { initCommentsSection } from './assets/js/comments.js';
 
         document.addEventListener('DOMContentLoaded', () => {
             const navLoginLink = document.getElementById('navLoginLink');
@@ -107,7 +118,7 @@
                 window.location.href = 'login.html';
             });
 
-            // Lógica para carregar detalhes do anúncio
+            
             const params = new URLSearchParams(window.location.search);
             const announcementId = params.get('id');
             const detailsContainer = document.getElementById('announcement-details');
@@ -157,13 +168,17 @@
                             <p class="detail-description">${announcement.description}</p>
                             <div class="detail-meta">
                                 <span class="category art-nouveau-tag">Categoria: ${announcement.category}</span>
-                                <span class="price art-nouveau-tag">Preço: ${announcement.price}</span>
+                                <span class="price art-nouveau-tag">Preço: R$ ${announcement.price.toFixed(2).replace('.', ',')}${announcement.price_unit || ''}</span>
                                 ${announcement.artist_name ? `<span class="artist-name art-nouveau-tag">Artista: ${announcement.artist_name}</span>` : ''}
                             </div>
                             <div class="portfolio-section">
                                 ${portfolioHtml}
                             </div>
                         `;
+                        
+                        
+                        initCommentsSection(announcementId);
+
                     } else {
                         detailsContainer.innerHTML = '<p>Anúncio não encontrado.</p>';
                     }

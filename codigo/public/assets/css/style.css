@@ -356,3 +356,122 @@ body {
     border: 2px dashed var(--color-accent);
     background-color: var(--color-background);
 }
+
+/* Seção de Comentários */
+.comments-section {
+    margin-top: 60px;
+    padding: 40px;
+}
+
+.comments-section h3 {
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 2.2em;
+    margin-bottom: 30px;
+}
+
+#comments-list {
+    margin-bottom: 40px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px; 
+}
+
+.comment-item {
+    background-color: var(--color-background);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: var(--color-text);
+    font-size: 1.1em;
+}
+
+.comment-author .user-type {
+    font-weight: normal;
+    font-size: 0.9em;
+    color: var(--color-secondary);
+    margin-left: 8px;
+}
+
+.comment-date {
+    font-size: 0.9em;
+    color: var(--color-secondary);
+    margin-left: auto; 
+}
+
+.comment-text {
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-top: 0;
+    word-wrap: break-word;
+}
+
+/* Formulário de Comentário */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.comment-form textarea {
+    width: calc(100% - 40px);
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--color-secondary);
+    background-color: white;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    font-size: 1em;
+    color: var(--color-text);
+    resize: vertical; 
+    min-height: 100px;
+    font-family: 'Playfair Display', serif;
+}
+
+.comment-form textarea::placeholder {
+    color: var(--color-secondary);
+}
+
+.comment-form button {
+    width: auto;
+    align-self: flex-end;
+    padding: 12px 30px;
+    font-size: 1em;
+}
+
+.login-to-comment-message {
+    text-align: center;
+    color: var(--color-secondary);
+    font-style: italic;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px dashed var(--color-accent);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.login-to-comment-message a {
+    color: var(--color-primary);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-to-comment-message a:hover {
+    text-decoration: underline;
+}
