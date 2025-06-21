@@ -11,10 +11,13 @@
     --color-text: #2f3e46;
     --color-light-background: #e6e3d2;
 
-    --header-bg-color: #3b5a5b;
+    --header-bg-color-start: #3b5a5b; /* Início do gradiente do cabeçalho */
+    --header-bg-color-end: #2f4a4b;   /* Fim do gradiente do cabeçalho */
     --header-item-bg-color: #4a6c6d;
     --header-icon-color: #fdfaf6;
     --header-logo-color: #b08d57;
+
+    --separator-color: rgba(255, 255, 255, 0.15); /* Cor para os separadores de item */
 }
 
 /* ==================================== */
@@ -50,14 +53,14 @@ body {
 
 /* Header */
 .header {
-    background-color: var(--header-bg-color);
+    background: linear-gradient(to right, var(--header-bg-color-start), var(--header-bg-color-end)); /* Gradiente no cabeçalho */
     padding: 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     position: relative;
     z-index: 10;
     display: flex;
-    height: 70px;
-    align-items: stretch;
+    height: 70px; /* Altura fixa para todos os itens */
+    align-items: stretch; /* Estica os itens para preencher a altura */
 }
 
 .header-content {
@@ -65,12 +68,13 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0;
+    padding: 0 20px; /* Espaçamento das bordas do container */
 }
 
 /* Main Content */
 .main-content {
     padding: 60px 0;
+    position: relative; /* Para posicionamento da notificação */
 }
 
 /* Footer */
@@ -104,9 +108,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 100%; /* Ocupa a altura total do header */
     transition: background-color 0.3s ease;
-    border-right: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid var(--separator-color); /* Separador visual */
 }
 
 .hamburger-menu:hover {
@@ -115,21 +119,21 @@ body {
 
 /* Logo */
 .header .logo {
-    margin: 0;
+    margin: 0 20px; /* Espaçamento lateral */
     font-size: 2.5em;
     color: var(--header-logo-color);
     text-shadow: none;
     display: flex;
     align-items: center;
-    padding: 0 20px;
-    border-right: 1px solid rgba(0,0,0,0.1);
+    height: 100%;
+    /* Removido border-right aqui para melhor controle */
 }
 
 /* Ícones de Navegação Central */
 .nav-icons {
-    flex-grow: 1;
+    flex-grow: 1; /* Ocupa o espaço restante */
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centraliza os ícones */
     align-items: center;
     height: 100%;
 }
@@ -147,42 +151,54 @@ body {
     height: 100%;
     display: flex;
     align-items: stretch;
+    border-left: 1px solid var(--separator-color); /* Separador visual entre os itens */
 }
+
+.nav-icons ul li:first-child {
+    border-left: none; /* Remove separador do primeiro item */
+}
+
 
 .nav-icons ul li a {
     color: var(--header-icon-color);
     text-decoration: none;
     font-size: 1.2em;
     display: flex;
+    flex-direction: column; /* Ícone em cima do texto */
     align-items: center;
-    padding: 0 25px;
+    justify-content: center; /* Centraliza verticalmente */
+    padding: 0 20px; /* Espaçamento interno dos links */
     height: 100%;
-    transition: background-color 0.3s ease;
-    border-right: 1px solid rgba(0,0,0,0.1);
-    border-left: 1px solid rgba(255,255,255,0.05);
-}
-
-.nav-icons ul li:first-child a {
-    border-left: none;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    position: relative; /* Para efeitos hover */
+    overflow: hidden; /* Para esconder o efeito de fundo */
 }
 
 .nav-icons ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15); /* Fundo sutil ao passar o mouse */
+    color: var(--header-logo-color); /* Realce da cor do logo */
+    transform: translateY(-2px); /* Pequeno efeito de "levantar" */
 }
 
 .nav-icons ul li a i {
-    font-size: 1.5em;
+    font-size: 1.6em; /* Ícones um pouco maiores */
+    margin-bottom: 5px; /* Espaço entre ícone e label */
 }
 
 .icon-label {
-    display: none;
+    font-size: 0.8em; /* Tamanho do texto abaixo do ícone */
+    color: rgba(255, 255, 255, 0.8); /* Cor mais suave para o label */
 }
 
+
+/* Ordem dos itens de navegação */
 .nav-item-compras { order: 1; }
 .nav-item-inicio { order: 2; }
 .nav-item-quickfinder { order: 3; }
-.nav-item-login { order: 4; }
-.nav-item-logout { order: 5; }
+.nav-item-saved { order: 4; } /* Item de "Salvos" */
+.nav-item-login { order: 5; }
+.nav-item-logout { order: 6; }
+
 
 /* Perfil */
 .profile-icon {
@@ -190,27 +206,32 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
-    border-left: 1px solid rgba(255,255,255,0.05);
+    border-left: 1px solid var(--separator-color); /* Separador visual */
+    padding-left: 20px; /* Espaço após o separador */
 }
 
 .profile-icon a {
     color: var(--header-icon-color);
     text-decoration: none;
-    font-size: 1.8em;
-    padding: 0 20px;
+    font-size: 1.2em;
     display: flex;
+    flex-direction: column; /* Ícone em cima do texto */
     align-items: center;
     justify-content: center;
+    padding: 0 10px; /* Espaçamento interno */
     height: 100%;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .profile-icon a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--header-logo-color);
+    transform: translateY(-2px);
 }
 
 .profile-icon a i {
-    font-size: 1.5em;
+    font-size: 1.8em; /* Ícone de perfil um pouco maior */
+    margin-bottom: 5px;
 }
 
 /* Card base para seções e itens */
@@ -373,14 +394,14 @@ body {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(var(--color-primary), 0.9); /* Usando a cor primária do tema */
+    background-color: rgba(var(--color-primary), 0.9);
     color: var(--color-light-text);
     padding: 15px 25px;
     border-radius: 10px;
-    z-index: 1100; /* Acima do sidebar e overlay */
+    z-index: 1100;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0s ease-in-out 0.3s; /* Delay para esconder */
+    transition: opacity 0.3s ease-in-out, visibility 0s ease-in-out 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     font-size: 1.1em;
     text-align: center;
@@ -389,5 +410,124 @@ body {
 .custom-notification.show {
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.3s ease-in-out, visibility 0s ease-in-out 0s; /* Sem delay para mostrar */
+    transition: opacity 0.3s ease-in-out, visibility 0s ease-in-out 0s;
+}
+
+/* Animação para o botão de estrela */
+@keyframes starPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+#superLikeBtn.pulsing {
+    animation: starPulse 0.6s ease-out;
+}
+
+/* Estilos para perfis salvos (seção) */
+.saved-profiles-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.saved-profiles-section h2 {
+    color: var(--color-primary);
+    margin-bottom: 40px;
+    font-size: 2.5em;
+}
+
+.saved-profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.saved-profile-card {
+    background-color: var(--color-light-background);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.saved-profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.profile-thumbnail-container {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    background-color: #eee;
+}
+
+.profile-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.saved-profile-card:hover .profile-thumbnail {
+    transform: scale(1.05);
+}
+
+.profile-info-area {
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-name {
+    font-family: 'Marcellus SC', serif;
+    font-size: 1.4em;
+    color: var(--color-text);
+    margin: 0 0 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.profile-profession {
+    font-size: 0.95em;
+    color: var(--color-secondary);
+    margin: 0 0 15px 0;
+    width: 100%;
+}
+
+.chat-button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    margin: 0;
+    width: auto;
+    align-self: flex-end;
+    border-radius: 20px;
+    background-color: var(--color-accent);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.chat-button:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.chat-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .saved-profiles-grid {
+        grid-template-columns: 1fr;
+    }
 }

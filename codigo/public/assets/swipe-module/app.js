@@ -8,11 +8,19 @@ const notificationElement = document.getElementById('customNotification');
 let notificationTimeout;
 
 // Função para exibir notificações personalizadas
-function showNotification(message, duration = 3000) {
+function showNotification(message, type = 'info', duration = 3000) { // Adicionado 'type' para diferentes estilos de notificação
     // Verifica se o elemento de notificação está disponível
     if (notificationElement) {
         notificationElement.textContent = message;
-        notificationElement.classList.add('show'); // Adiciona a classe para mostrar a notificação
+        notificationElement.className = 'custom-notification show'; // Reseta classes e adiciona 'show'
+        
+        if (type === 'success') {
+            notificationElement.classList.add('success');
+        } else if (type === 'error') {
+            notificationElement.classList.add('error');
+        } else if (type === 'info') {
+            notificationElement.classList.add('info'); // Para informações gerais
+        }
 
         // Limpa qualquer timeout anterior para que a notificação possa ser mostrada imediatamente
         clearTimeout(notificationTimeout);
@@ -20,6 +28,7 @@ function showNotification(message, duration = 3000) {
         // Define um novo timeout para esconder a notificação após a duração especificada
         notificationTimeout = setTimeout(() => {
             notificationElement.classList.remove('show'); // Remove a classe para esconder a notificação
+            notificationElement.classList.remove(type); // Remove o tipo para resetar cor
         }, duration);
     } else {
         // Fallback para o alert() do navegador se o elemento de notificação não for encontrado
