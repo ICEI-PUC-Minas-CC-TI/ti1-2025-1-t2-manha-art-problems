@@ -18,7 +18,6 @@ Existe uma demanda crescente por plataformas que facilitem não apenas a conexã
 
 * Luciana Mara Freitas Diniz
 * Wesley Dias Maciel
-*
 
 
 
