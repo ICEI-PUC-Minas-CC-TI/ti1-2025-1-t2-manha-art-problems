@@ -1,23 +1,31 @@
+import { getUserAnnouncements } from './auth.js'; // AGORA NO TOPO DO ARQUIVO
+
 document.addEventListener('DOMContentLoaded', () => {
     const announcementContainer = document.getElementById('announcement-container');
 
     async function fetchAnnouncements() {
         try {
-            const response = await fetch('assets/data/announcements.json');
+            const responseStatic = await fetch('assets/data/announcements.json');
+            if (!responseStatic.ok) {
+                throw new Error(`Erro ao carregar anúncios estáticos: ${responseStatic.status} ${responseStatic.statusText}`);
+            }
+            const staticAnnouncements = await responseStatic.json();
 
-            if (!response.ok) {
-                throw new Error(`Erro ao carregar anúncios: ${response.status} ${response.statusText}`);
+            const userAnnouncements = getUserAnnouncements();
+
+            const allAnnouncements = [...staticAnnouncements, ...userAnnouncements];
+
+            announcementContainer.innerHTML = '';
+
+            if (allAnnouncements.length === 0) {
+                announcementContainer.innerHTML = '<p>Nenhum anúncio disponível no momento.</p>';
+                return;
             }
 
-            const announcements = await response.json();
-
-            announcementContainer.innerHTML = ''; // Limpa o "Carregando anúncios..."
-
-            announcements.forEach(announcement => {
+            allAnnouncements.forEach(announcement => {
                 const announcementItem = document.createElement('div');
                 announcementItem.classList.add('announcement-item', 'art-nouveau-card');
                 
-                // Adiciona um listener de clique para redirecionar para a página de detalhes
                 announcementItem.addEventListener('click', () => {
                     window.location.href = `announcement-detail.html?id=${announcement.id}`;
                 });

@@ -12,8 +12,7 @@
 <body>
     <header class="header">
         <div class="container header-content">
-            <button class="hamburger-menu" aria-label="Menu">
-                <i class="fas fa-bars"></i>
+            <button class="hamburger-menu" aria-label="Menu"> <i class="fas fa-bars"></i>
             </button>
             <h1 class="logo art-nouveau-text">ArtFlow</h1>
             <nav class="nav-icons" id="headerNav">
@@ -67,6 +66,7 @@
 
     <main class="main-content login-page">
         <div class="container login-container">
+            <div id="customNotification" class="custom-notification"></div>
             <div class="login-card art-nouveau-card">
                 <h2 class="art-nouveau-text">Crie Sua Conta ArtFlow</h2>
                 <form id="registerForm" class="auth-form">
@@ -109,19 +109,19 @@
     </footer>
 
     <script type="module" src="assets/js/register.js"></script>
+    <script type="module" src="assets/js/auth.js"></script>
+    <script type="module" src="assets/js/utils.js"></script>
+
     <script type="module">
         import { isAuthenticated, getCurrentUsername, getUserType } from './assets/js/auth.js';
 
         document.addEventListener('DOMContentLoaded', () => {
             const profileLabel = document.getElementById('profileLabel');
             const profileIconLink = document.getElementById('profileIconLink');
-            const navSavedLink = document.getElementById('navSavedLink'); // NOVO: Link de Salvos
+            const navSavedLink = document.getElementById('navSavedLink');
 
-            // --- Lógica de visibilidade dos links de Login/Logout/Salvos ---
             if (isAuthenticated()) {
-                // Aqui não deveria ter navLoginLink/navLogoutLink, pois é a página de registro
-                // Mas garantimos que o link 'Salvos' apareça
-                navSavedLink.style.display = 'list-item'; // MOSTRAR Link de Salvos
+                navSavedLink.style.display = 'list-item';
                 const username = getCurrentUsername();
                 const userType = getUserType();
                 if (username && userType) {
@@ -132,19 +132,19 @@
                 profileIconLink.href = "#";
 
             } else {
-                navSavedLink.style.display = 'none'; // ESCONDER Link de Salvos
+                navSavedLink.style.display = 'none';
                 profileLabel.textContent = 'Perfil';
                 profileIconLink.href = "login.html";
             }
 
-            // --- NOVO: Lógica para o botão Quickfinder (Redirecionar para index.html) ---
             const toggleSwipeModuleBtn = document.getElementById('toggleSwipeModule');
             if (toggleSwipeModuleBtn) {
                 toggleSwipeModuleBtn.addEventListener('click', (e) => {
-                    e.preventDefault(); // Impede o comportamento padrão do link
-                    window.location.href = 'index.html'; // Redireciona para a homepage
+                    e.preventDefault();
+                    window.location.href = 'index.html';
                 });
             }
+
         });
     </script>
 </body>

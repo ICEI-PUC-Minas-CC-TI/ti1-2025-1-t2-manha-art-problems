@@ -19,10 +19,9 @@
             <h1 class="logo art-nouveau-text">ArtFlow</h1>
             <nav class="nav-icons" id="headerNav">
                 <ul>
-                    <li class="nav-item-compras">
-                        <a href="#" aria-label="Minhas Compras">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="icon-label">Compras</span>
+                    <li class="nav-item-compras" id="navCreateServiceLink" style="display:none;">
+                        <a href="create-service.html" aria-label="Criar Serviço">
+                            <i class="fas fa-plus-circle"></i> <span class="icon-label">Criar Serviço</span>
                         </a>
                     </li>
                     <li class="nav-item-inicio">
@@ -68,7 +67,7 @@
 
     <main class="main-content">
         <div class="container">
-            <div id="customNotification" class="custom-notification"></div>
+            <div id="customNotification" class="custom-notification"></div> 
             
             <section class="filter-search-section">
                 <h2 class="art-nouveau-text">Encontre a sua inspiração!</h2>
@@ -154,17 +153,23 @@
     <script type="module" src="assets/swipe-module/perfis.js"></script>
     <script type="module" src="assets/swipe-module/app.js"></script>
     <script type="module" src="assets/js/filter.js"></script>
+    <script type="module" src="assets/js/utils.js"></script>
+    <script type="module" src="assets/js/comments.js"></script>
+
 
     <script type="module">
         import { isAuthenticated, logoutUser, getCurrentUsername, getUserType } from './assets/js/auth.js';
         import { carregarPerfilInicial } from './assets/swipe-module/app.js';
+        import { showNotification } from './assets/js/utils.js';
 
         document.addEventListener('DOMContentLoaded', () => {
             const navLoginLink = document.getElementById('navLoginLink');
             const navLogoutLink = document.getElementById('navLogoutLink');
             const navSavedLink = document.getElementById('navSavedLink');
+            const navCreateServiceLink = document.getElementById('navCreateServiceLink'); // NOVO: Link Criar Serviço
             const profileLabel = document.getElementById('profileLabel');
             const profileIconLink = document.getElementById('profileIconLink');
+            const currentUserType = getUserType(); // Pega o tipo de usuário logado
 
             console.log('isAuthenticated() na inicialização:', isAuthenticated());
 
@@ -172,10 +177,17 @@
                 navLoginLink.style.display = 'none';
                 navLogoutLink.style.display = 'list-item';
                 navSavedLink.style.display = 'list-item';
+                
+                // Mostrar "Criar Serviço" APENAS para ArtFlow
+                if (currentUserType === 'artflow') {
+                    navCreateServiceLink.style.display = 'list-item';
+                } else {
+                    navCreateServiceLink.style.display = 'none';
+                }
+
                 const username = getCurrentUsername();
-                const userType = getUserType();
-                if (username && userType) {
-                    profileLabel.textContent = `${username} (${userType.charAt(0).toUpperCase() + userType.slice(1)})`;
+                if (username) {
+                    profileLabel.textContent = `${username} (${currentUserType.charAt(0).toUpperCase() + currentUserType.slice(1)})`;
                 } else {
                     profileLabel.textContent = 'Perfil';
                 }
@@ -185,6 +197,7 @@
                 navLoginLink.style.display = 'list-item';
                 navLogoutLink.style.display = 'none';
                 navSavedLink.style.display = 'none';
+                navCreateServiceLink.style.display = 'none'; // Esconder se não logado
                 profileLabel.textContent = 'Perfil';
                 profileIconLink.href = "login.html";
             }
@@ -231,6 +244,8 @@
                     document.body.style.overflow = '';
                 });
             }
+
+            // A lógica do Hamburger Menu foi removida daqui, pois ele não será funcional
         });
     </script>
 </body>

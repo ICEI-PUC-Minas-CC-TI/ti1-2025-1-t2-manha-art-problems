@@ -1,0 +1,169 @@
+/* ==================================== */
+/* ESTILOS DA PÁGINA DE CRIAÇÃO DE SERVIÇO (create-service.html) */
+/* ==================================== */
+
+.create-service-wrapper {
+    padding: 40px 0;
+}
+
+.create-service-section {
+    padding: 40px;
+    background-color: var(--color-light-background);
+    border-radius: 25px; /* Ajustado para um pouco menos arredondado */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 800px; /* Largura máxima para o formulário */
+    margin: 0 auto;
+}
+
+.create-service-section h2 {
+    color: var(--color-primary);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+#createServiceForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaço entre os grupos de formulário */
+    text-align: left;
+}
+
+#createServiceForm .form-group {
+    margin-bottom: 0; /* Removendo margem extra se o gap já for suficiente */
+}
+
+#createServiceForm label {
+    display: block;
+    font-weight: bold;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+#createServiceForm .art-nouveau-input,
+#createServiceForm textarea,
+#createServiceForm select {
+    width: 100%; /* Ocupa a largura total do grupo */
+    padding: 12px 15px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 8px; /* Menos arredondado para inputs */
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+}
+
+#createServiceForm textarea {
+    resize: vertical; /* Permite redimensionamento vertical */
+    min-height: 100px;
+}
+
+#createServiceForm .art-nouveau-input:focus,
+#createServiceForm textarea:focus,
+#createServiceForm select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(var(--color-primary), 0.2);
+}
+
+/* Estilos específicos para o grupo de preço */
+.price-input-group .price-input-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.price-input-group .currency-symbol {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.price-input-group .price-input {
+    flex-grow: 1; /* Preenche o espaço disponível */
+    width: auto; /* Anula o width: 100% padrão */
+}
+
+.price-input-group .price-unit-select {
+    width: auto; /* Ajusta ao conteúdo */
+    max-width: 120px; /* Largura máxima para a unidade */
+}
+
+/* Estilos para adicionar/remover mídias de portfólio */
+.portfolio-media-group #portfolioMediaInputs {
+    margin-top: 10px;
+}
+
+.media-input-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.media-input-item .media-type-select {
+    flex-shrink: 0; /* Não encolhe */
+    width: 100px; /* Largura fixa para o seletor de tipo */
+}
+
+.media-input-item .media-url-input {
+    flex-grow: 1; /* Preenche o espaço restante */
+    margin: 0; /* Remove margens padrão */
+}
+
+.media-input-item .remove-media-button {
+    flex-shrink: 0;
+    width: 40px; /* Largura fixa para o botão */
+    height: 40px; /* Altura fixa para o botão */
+    padding: 0; /* Remove padding */
+    border-radius: 50%; /* Botão redondo */
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dc3545; /* Vermelho para remover */
+    box-shadow: none;
+}
+
+.media-input-item .remove-media-button:hover {
+    background-color: #c82333;
+    transform: none; /* Sem transform para botões de remover */
+    box-shadow: none;
+}
+
+#addMediaButton {
+    margin-top: 10px;
+    width: auto;
+    padding: 10px 20px;
+    font-size: 1em;
+}
+
+.submit-service-button {
+    margin-top: 30px;
+    width: auto; /* Deixa o botão se ajustar */
+    padding: 15px 40px;
+    font-size: 1.2em;
+}
+
+/* Mensagem de acesso restrito */
+.access-restricted-message {
+    text-align: center;
+    color: var(--color-error-bg); /* Cor de erro ou destaque para a mensagem */
+    font-size: 1.2em;
+    padding: 30px;
+    border: 2px dashed var(--color-error-bg);
+    border-radius: 15px;
+    margin-top: 50px;
+    background-color: rgba(255, 0, 0, 0.05); /* Fundo sutil */
+}
+
+.access-restricted-message a {
+    color: var(--color-primary);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.access-restricted-message a:hover {
+    text-decoration: underline;
+}

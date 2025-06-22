@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtFlow - Perfis Salvos</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/saved-profiles.css"> <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/saved-profiles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header">
         <div class="container header-content">
-            <button class="hamburger-menu" aria-label="Menu">
-                <i class="fas fa-bars"></i>
+            <button class="hamburger-menu" aria-label="Menu"> <i class="fas fa-bars"></i>
             </button>
             <h1 class="logo art-nouveau-text">ArtFlow</h1>
             <nav class="nav-icons" id="headerNav">
@@ -66,7 +66,8 @@
 
     <main class="main-content">
         <div class="container">
-            <div id="customNotification" class="custom-notification"></div> <section class="saved-profiles-section">
+            <div id="customNotification" class="custom-notification"></div>
+            <section class="saved-profiles-section">
                 <h2 class="art-nouveau-text">Seus Perfis Salvos</h2>
                 <div id="savedProfilesGrid" class="saved-profiles-grid">
                     <p>Carregando perfis salvos...</p>
@@ -82,8 +83,10 @@
     </footer>
 
     <script type="module" src="assets/js/auth.js"></script>
+    <script type="module" src="assets/js/utils.js"></script>
     <script type="module">
         import { isAuthenticated, logoutUser, getCurrentUsername, getUserType, getSavedProfiles } from './assets/js/auth.js';
+        import { showNotification } from './assets/js/utils.js';
         
         document.addEventListener('DOMContentLoaded', () => {
             const navLoginLink = document.getElementById('navLoginLink');
@@ -93,7 +96,6 @@
             const profileIconLink = document.getElementById('profileIconLink');
             const savedProfilesGrid = document.getElementById('savedProfilesGrid');
 
-            // --- Lógica de visibilidade do cabeçalho ---
             if (isAuthenticated()) {
                 navLoginLink.style.display = 'none';
                 navLogoutLink.style.display = 'list-item';
@@ -107,28 +109,26 @@
                 }
                 profileIconLink.href = "#";
             } else {
-                // Redireciona para o login se não estiver autenticado
                 window.location.href = 'login.html';
-                return; // Impede que o resto do script seja executado
+                return;
             }
 
-            // --- Lógica de Logout ---
             navLogoutLink.querySelector('a').addEventListener('click', (e) => {
                 e.preventDefault();
                 logoutUser();
                 window.location.href = 'login.html';
             });
 
-            // --- NOVO: Lógica para o botão Quickfinder (Redirecionar para index.html) ---
             const toggleSwipeModuleBtn = document.getElementById('toggleSwipeModule');
             if (toggleSwipeModuleBtn) {
                 toggleSwipeModuleBtn.addEventListener('click', (e) => {
-                    e.preventDefault(); // Impede o comportamento padrão do link
-                    window.location.href = 'index.html'; // Redireciona para a homepage
+                    e.preventDefault();
+                    window.location.href = 'index.html';
                 });
             }
 
-            // Lógica para carregar e exibir os perfis salvos
+            // A lógica do Hamburger Menu foi removida daqui, pois ele não será funcional
+
             const currentUser = getCurrentUsername();
             if (currentUser) {
                 const savedProfiles = getSavedProfiles(currentUser);
@@ -138,7 +138,7 @@
             }
 
             function displaySavedProfiles(profiles) {
-                savedProfilesGrid.innerHTML = ''; // Limpa o conteúdo
+                savedProfilesGrid.innerHTML = '';
                 if (profiles.length === 0) {
                     savedProfilesGrid.innerHTML = '<p>Você ainda não salvou nenhum perfil.</p>';
                     return;
@@ -159,11 +159,10 @@
                     `;
                     profileCard.querySelector('.chat-button').addEventListener('click', (e) => {
                         const profileName = e.target.dataset.profileName;
-                        // Usar showNotification do app.js é mais complexo aqui, pois saved-profiles.html não importa app.js
-                        // Para manter a simplicidade, usaremos alert() ou uma notificação simples embutida se necessário.
-                        // Por ora, um console.log e redirecionamento simples.
-                        console.log(`Iniciando chat com ${profileName}!`);
-                        window.location.href = 'chat.html';
+                        showNotification(`Iniciando chat com ${profileName}!`, 'info');
+                        setTimeout(() => {
+                            window.location.href = 'chat.html';
+                        }, 1000);
                     });
                     savedProfilesGrid.appendChild(profileCard);
                 });
