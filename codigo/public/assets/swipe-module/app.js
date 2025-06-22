@@ -1,4 +1,4 @@
-// public/assets/swipe-module/app.js
+
 import { listaDePerfisBase } from './perfis.js';
 import { getUsers, isAuthenticated, getUserType, getCurrentUsername, saveProfileForUser } from '../js/auth.js';
 import { showNotification } from '../js/utils.js';
@@ -41,11 +41,7 @@ function carregarListaDePerfis() {
         });
     }
 
-    // Opcional: Embaralha a lista para que a ordem não seja sempre a mesma
-    // for (let i = listaDePerfisCompleta.length - 1; i > 0; i--) {
-    //     const j = Math.floor(Math.random() * (i + 1));
-    //     [listaDePerfisCompleta[i], listaDePerfisCompleta[j]] = [listaDePerfisCompleta[j], listaDePerfisCompleta[i]];
-    // }
+   
 }
 
 

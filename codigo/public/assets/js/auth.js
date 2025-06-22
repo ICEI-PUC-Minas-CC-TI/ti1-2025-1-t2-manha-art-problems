@@ -1,11 +1,11 @@
-// public/assets/js/auth.js
+
 
 const STORAGE_KEY = 'artflow_users';
 const AUTH_KEY = 'isAuthenticated';
 const CURRENT_USER_KEY = 'currentUser';
 const USER_TYPE_KEY = 'userType';
 
-// NOVO: Chave para armazenar anúncios criados pelos usuários
+
 const USER_ANNOUNCEMENTS_KEY = 'artflow_user_announcements'; 
 
 export function getUsers() {
@@ -111,13 +111,13 @@ export function getSavedProfiles(username) {
     return user ? (user.savedProfiles || []) : [];
 }
 
-// NOVO: Função para obter anúncios criados por usuários
+
 export function getUserAnnouncements() {
     const announcementsJson = localStorage.getItem(USER_ANNOUNCEMENTS_KEY);
     return announcementsJson ? JSON.parse(announcementsJson) : [];
 }
 
-// NOVO: Função para salvar anúncios criados por usuários
+s
 export function saveUserAnnouncements(announcements) {
     localStorage.setItem(USER_ANNOUNCEMENTS_KEY, JSON.stringify(announcements));
 }

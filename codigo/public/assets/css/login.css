@@ -3,12 +3,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 70px - 120px); /* Altura da tela - header - footer (aprox.) */
-    padding: 30px 0; /* Espaçamento para o conteúdo */
+    min-height: calc(100vh - 70px - 120px); 
 }
 
 .login-container {
-    max-width: 500px; /* Largura máxima do card de login */
+    max-width: 500px; 
     width: 100%;
 }
 
@@ -26,25 +25,25 @@
 .auth-form {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaço entre os campos do formulário */
+    gap: 20px; 
 }
 
 .form-group {
-    text-align: left; /* Alinha o label à esquerda */
+    text-align: left; 
 }
 
 .form-group label {
-    display: block; /* Garante que o label ocupe sua própria linha */
+    display: block; 
     margin-bottom: 8px;
     font-weight: bold;
     color: var(--color-text);
 }
 
 .auth-form .art-nouveau-input {
-    width: calc(100% - 40px); /* Ajusta a largura para padding e margem */
-    margin: 0; /* Remove margem extra do input */
-    padding: 15px 20px; /* Garante padding consistente */
-    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    width: calc(100% - 40px); 
+    margin: 0; 
+    padding: 15px 20px; 
+    box-sizing: border-box; 
 }
 
 .auth-form .art-nouveau-button {
@@ -72,7 +71,7 @@
     border: 1px solid #f5c6cb;
 }
 
-/* Estilos para o seletor de tipo de usuário */
+
 .form-group select.art-nouveau-input {
     appearance: none;
     -webkit-appearance: none;
