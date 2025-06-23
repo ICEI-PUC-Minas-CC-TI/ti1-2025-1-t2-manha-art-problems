@@ -1,20 +1,20 @@
 
-import { authenticateUser, isAuthenticated } from './auth.js'; 
+import { authenticateUser, isAuthenticated } from './auth.js'; // Removido registerUser
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+    // Referências aos elementos do DOM para Login
     const loginForm = document.getElementById('loginForm');
     const loginUsernameInput = document.getElementById('loginUsername');
     const loginPasswordInput = document.getElementById('loginPassword');
     const loginUserTypeSelect = document.getElementById('userType');
     const loginMessage = document.getElementById('loginMessage');
 
-    
+    // Se o usuário já estiver logado, redireciona para a página inicial
     if (isAuthenticated()) {
         window.location.href = 'index.html';
     }
 
-  
+    //  LOGIN
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
- 
+    //  exibir mensagens (apenas para o loginMessage)
     function displayMessage(element, message, type) {
         element.textContent = message;
-        element.className = 'auth-message'; 
+        element.className = 'auth-message'; // Reseta classes
         if (type) {
-            element.classList.add(type); 
+            element.classList.add(type); // Adiciona 'success' ou 'error'
         }
-        element.style.display = 'block'; 
+        element.style.display = 'block'; // Mostra a mensagem
     }
 });

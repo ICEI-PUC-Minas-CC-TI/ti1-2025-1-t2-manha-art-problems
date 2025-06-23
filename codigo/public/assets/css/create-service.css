@@ -1,3 +1,6 @@
+/* ==================================== */
+/* ESTILOS DA PÁGINA DE CRIAÇÃO DE SERVIÇO (create-service.html) */
+/* ==================================== */
 
 .create-service-wrapper {
     padding: 40px 0;
@@ -6,10 +9,10 @@
 .create-service-section {
     padding: 40px;
     background-color: var(--color-light-background);
-    border-radius: 25px; 
+    border-radius: 25px; /* Ajustado para um pouco menos arredondado */
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     text-align: center;
-    max-width: 800px; 
+    max-width: 800px; /* Largura máxima para o formulário */
     margin: 0 auto;
 }
 
@@ -22,12 +25,12 @@
 #createServiceForm {
     display: flex;
     flex-direction: column;
-    gap: 20px; 
+    gap: 20px; /* Espaço entre os grupos de formulário */
     text-align: left;
 }
 
 #createServiceForm .form-group {
-    margin-bottom: 0; 
+    margin-bottom: 0; /* Removendo margem extra se o gap já for suficiente */
 }
 
 #createServiceForm label {
@@ -41,10 +44,10 @@
 #createServiceForm .art-nouveau-input,
 #createServiceForm textarea,
 #createServiceForm select {
-    width: 100%; 
+    width: 100%; /* Ocupa a largura total do grupo */
     padding: 12px 15px;
     border: 1px solid var(--color-secondary);
-    border-radius: 8px; 
+    border-radius: 8px; /* Menos arredondado para inputs */
     font-size: 1em;
     box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -52,7 +55,7 @@
 }
 
 #createServiceForm textarea {
-    resize: vertical; 
+    resize: vertical; /* Permite redimensionamento vertical */
     min-height: 100px;
 }
 
@@ -64,7 +67,7 @@
     box-shadow: 0 0 0 2px rgba(var(--color-primary), 0.2);
 }
 
-
+/* Estilos específicos para o grupo de preço */
 .price-input-group .price-input-flex {
     display: flex;
     align-items: center;
@@ -78,15 +81,16 @@
 }
 
 .price-input-group .price-input {
-    flex-grow: 1; 
-    width: auto; 
+    flex-grow: 1; /* Preenche o espaço disponível */
+    width: auto; /* Anula o width: 100% padrão */
 }
 
 .price-input-group .price-unit-select {
-    width: auto; 
-    max-width: 120px;
+    width: auto; /* Ajusta ao conteúdo */
+    max-width: 120px; /* Largura máxima para a unidade */
 }
 
+/* Estilos para adicionar/remover mídias de portfólio */
 .portfolio-media-group #portfolioMediaInputs {
     margin-top: 10px;
 }
@@ -99,32 +103,32 @@
 }
 
 .media-input-item .media-type-select {
-    flex-shrink: 0; 
-    width: 100px;
+    flex-shrink: 0; /* Não encolhe */
+    width: 100px; /* Largura fixa para o seletor de tipo */
 }
 
 .media-input-item .media-url-input {
-    flex-grow: 1; 
-    margin: 0; 
+    flex-grow: 1; /* Preenche o espaço restante */
+    margin: 0; /* Remove margens padrão */
 }
 
 .media-input-item .remove-media-button {
     flex-shrink: 0;
-    width: 40px; 
-    height: 40px; 
-    padding: 0; 
-    border-radius: 50%; 
+    width: 40px; /* Largura fixa para o botão */
+    height: 40px; /* Altura fixa para o botão */
+    padding: 0; /* Remove padding */
+    border-radius: 50%; /* Botão redondo */
     font-size: 1.5em;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #dc3545; 
+    background-color: #dc3545; /* Vermelho para remover */
     box-shadow: none;
 }
 
 .media-input-item .remove-media-button:hover {
     background-color: #c82333;
-    transform: none; 
+    transform: none; /* Sem transform para botões de remover */
     box-shadow: none;
 }
 
@@ -137,20 +141,21 @@
 
 .submit-service-button {
     margin-top: 30px;
-    width: auto; 
+    width: auto; /* Deixa o botão se ajustar */
     padding: 15px 40px;
     font-size: 1.2em;
 }
 
+/* Mensagem de acesso restrito */
 .access-restricted-message {
     text-align: center;
-    color: var(--color-error-bg); 
+    color: var(--color-error-bg); /* Cor de erro ou destaque para a mensagem */
     font-size: 1.2em;
     padding: 30px;
     border: 2px dashed var(--color-error-bg);
     border-radius: 15px;
     margin-top: 50px;
-    background-color: rgba(255, 0, 0, 0.05);
+    background-color: rgba(255, 0, 0, 0.05); /* Fundo sutil */
 }
 
 .access-restricted-message a {

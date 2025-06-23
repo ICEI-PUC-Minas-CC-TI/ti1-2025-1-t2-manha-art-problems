@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+/* ==================================== */
+/* 0. VARIÁVEIS            */
+/* ==================================== */
 :root {
     --color-primary: #4a6c6d;
     --color-secondary: #8c8c7c;
@@ -8,15 +11,15 @@
     --color-text: #2f3e46;
     --color-light-background: #e6e3d2;
 
-    --header-bg-color-start: #3b5a5b; 
-    --header-bg-color-end: #2f4a4b;   
+    --header-bg-color-start: #3b5a5b; /* Início do gradiente do cabeçalho */
+    --header-bg-color-end: #2f4a4b;   /* Fim do gradiente do cabeçalho */
     --header-item-bg-color: #4a6c6d;
     --header-icon-color: #fdfaf6;
     --header-logo-color: #b08d57;
 
-    --separator-color: rgba(255, 255, 255, 0.15); 
+    --separator-color: rgba(255, 255, 255, 0.15); /* Cor para os separadores de item */
 
-    
+    /* Cores para notificações */
     --notification-success-bg: #28a745;
     --notification-success-text: #fff;
     --notification-error-bg: #dc3545;
@@ -25,7 +28,9 @@
     --notification-info-text: #fff;
 }
 
-
+/* ==================================== */
+/* 1. ESTILOS BASE / GERAIS   */
+/* ==================================== */
 body {
     font-family: 'Playfair Display', serif;
     margin: 0;
@@ -35,7 +40,7 @@ body {
     line-height: 1.6;
 }
 
-
+/* NOVO: Impede o scroll do body quando o menu está aberto */
 body.no-scroll {
     overflow: hidden;
 }
@@ -46,14 +51,20 @@ body.no-scroll {
     padding: 0 30px;
 }
 
-
+/* ==================================== */
+/* 2. TIPOGRAFIA            */
+/* ==================================== */
 .art-nouveau-text {
     font-family: 'Marcellus SC', serif;
     font-weight: normal;
     letter-spacing: 1px;
 }
 
+/* ==================================== */
+/* 3. LAYOUT               */
+/* ==================================== */
 
+/* Header */
 .header {
     background: linear-gradient(to right, var(--header-bg-color-start), var(--header-bg-color-end)); /* Gradiente no cabeçalho */
     padding: 0;
@@ -61,8 +72,8 @@ body.no-scroll {
     position: relative;
     z-index: 10;
     display: flex;
-    height: 70px; 
-    align-items: stretch;
+    height: 70px; /* Altura fixa para todos os itens */
+    align-items: stretch; /* Estica os itens para preencher a altura */
 }
 
 .header-content {
@@ -70,16 +81,16 @@ body.no-scroll {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 20px; 
+    padding: 0 20px; /* Espaçamento das bordas do container */
 }
 
-
+/* Main Content */
 .main-content {
     padding: 60px 0;
-    position: relative; 
+    position: relative; /* Para posicionamento da notificação */
 }
 
-
+/* Footer */
 .footer {
     background: linear-gradient(to left, var(--color-primary), var(--color-secondary));
     color: white;
@@ -95,7 +106,11 @@ body.no-scroll {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
+/* ==================================== */
+/* 4. COMPONENTES            */
+/* ==================================== */
 
+/* Menu Hamburger */
 .hamburger-menu {
     background: none;
     border: none;
@@ -103,7 +118,7 @@ body.no-scroll {
     font-size: 1.8em;
     padding: 0 20px;
     cursor: pointer;
-    display: none; 
+    display: none; /* Escondido por padrão, só aparece em mobile (abaixo no @media) */
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -115,7 +130,7 @@ body.no-scroll {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-
+/* Logo */
 .header .logo {
     margin: 0 20px;
     font-size: 2.5em;
@@ -126,6 +141,7 @@ body.no-scroll {
     height: 100%;
 }
 
+/* Ícones de Navegação Central */
 .nav-icons {
     flex-grow: 1;
     display: flex;
@@ -187,7 +203,7 @@ body.no-scroll {
 }
 
 
-
+/* Ordem dos itens de navegação */
 .nav-item-compras { order: 1; }
 .nav-item-inicio { order: 2; }
 .nav-item-quickfinder { order: 3; }
@@ -230,7 +246,7 @@ body.no-scroll {
     margin-bottom: 5px;
 }
 
-
+/* Card base para seções e itens */
 .art-nouveau-card {
     background-color: var(--color-light-background);
     padding: 30px;
@@ -245,7 +261,7 @@ body.no-scroll {
     transform: translateY(-5px);
 }
 
-
+/* Inputs e Botões */
 .art-nouveau-input {
     width: 70%;
     padding: 15px 20px;
@@ -282,7 +298,7 @@ body.no-scroll {
     transform: translateY(-3px);
 }
 
-
+/* Seção de Anúncios */
 .announcement-section {
     margin-top: 60px;
 }
@@ -344,13 +360,13 @@ body.no-scroll {
     background-color: var(--color-primary);
 }
 
-
+/* Estilo para os placeholders */
 .announcement-item.placeholder {
     border: 2px dashed var(--color-accent);
     background-color: var(--color-background);
 }
 
-
+/* Footer */
 .footer {
     background: linear-gradient(to left, var(--color-primary), var(--color-secondary));
     color: white;
@@ -384,7 +400,7 @@ body.no-scroll {
     border-top: 1px dashed rgba(0,0,0,0.1);
 }
 
-
+/* Estilos para a notificação personalizada */
 .custom-notification {
     position: fixed;
     bottom: 30px;
@@ -425,7 +441,7 @@ body.no-scroll {
 }
 
 
-
+/* Animação para o botão de estrela */
 @keyframes starPulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.2); }
@@ -436,7 +452,7 @@ body.no-scroll {
     animation: starPulse 0.6s ease-out;
 }
 
-
+/* Estilos para perfis salvos (seção) */
 .saved-profiles-section {
     padding: 60px 0;
     text-align: center;
@@ -543,7 +559,7 @@ body.no-scroll {
         grid-template-columns: 1fr;
     }
 
-    
+    /* Estilos responsivos para o cabeçalho */
     .header-content {
         justify-content: space-between;
     }
@@ -634,11 +650,11 @@ body.no-scroll {
     }
 }
 
-
+/* Seção de Comentários */
 .comments-section {
     margin-top: 60px;
     padding: 40px;
-   
+    /* art-nouveau-card já aplica fundo, sombra, borda */
 }
 
 .comments-section h3 {
@@ -700,7 +716,7 @@ body.no-scroll {
     word-wrap: break-word;
 }
 
-
+/* Formulário de Comentário */
 .comment-form {
     display: flex;
     flex-direction: column;

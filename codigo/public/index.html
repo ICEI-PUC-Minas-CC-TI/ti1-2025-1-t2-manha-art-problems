@@ -166,10 +166,10 @@
             const navLoginLink = document.getElementById('navLoginLink');
             const navLogoutLink = document.getElementById('navLogoutLink');
             const navSavedLink = document.getElementById('navSavedLink');
-            const navCreateServiceLink = document.getElementById('navCreateServiceLink'); 
+            const navCreateServiceLink = document.getElementById('navCreateServiceLink'); // NOVO: Link Criar Serviço
             const profileLabel = document.getElementById('profileLabel');
             const profileIconLink = document.getElementById('profileIconLink');
-            const currentUserType = getUserType(); 
+            const currentUserType = getUserType(); // Pega o tipo de usuário logado
 
             console.log('isAuthenticated() na inicialização:', isAuthenticated());
 
@@ -177,7 +177,8 @@
                 navLoginLink.style.display = 'none';
                 navLogoutLink.style.display = 'list-item';
                 navSavedLink.style.display = 'list-item';
-               
+                
+                // Mostrar "Criar Serviço" APENAS para ArtFlow
                 if (currentUserType === 'artflow') {
                     navCreateServiceLink.style.display = 'list-item';
                 } else {
@@ -196,7 +197,7 @@
                 navLoginLink.style.display = 'list-item';
                 navLogoutLink.style.display = 'none';
                 navSavedLink.style.display = 'none';
-                navCreateServiceLink.style.display = 'none'; 
+                navCreateServiceLink.style.display = 'none'; // Esconder se não logado
                 profileLabel.textContent = 'Perfil';
                 profileIconLink.href = "login.html";
             }
@@ -244,6 +245,7 @@
                 });
             }
 
+            // A lógica do Hamburger Menu foi removida daqui, pois ele não será funcional
         });
     </script>
 </body>

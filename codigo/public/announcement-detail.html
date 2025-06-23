@@ -105,14 +105,15 @@
             const navSavedLink = document.getElementById('navSavedLink');
             const profileLabel = document.getElementById('profileLabel');
             const profileIconLink = document.getElementById('profileIconLink');
-            const navCreateServiceLink = document.getElementById('navCreateServiceLink');
-            const currentUserType = getUserType(); 
+            const navCreateServiceLink = document.getElementById('navCreateServiceLink'); // Pega o link de criar serviço
+            const currentUserType = getUserType(); // Pega o tipo de usuário logado
 
             if (isAuthenticated()) {
                 navLoginLink.style.display = 'none';
                 navLogoutLink.style.display = 'list-item';
                 navSavedLink.style.display = 'list-item';
-
+                
+                // Mostrar "Criar Serviço" APENAS para ArtFlow
                 if (currentUserType === 'artflow') {
                     if (navCreateServiceLink) navCreateServiceLink.style.display = 'list-item';
                 } else {
@@ -150,6 +151,7 @@
                 });
             }
 
+            // A lógica do Hamburger Menu foi removida, pois ele não será funcional
 
             const params = new URLSearchParams(window.location.search);
             const announcementId = params.get('id');
@@ -160,7 +162,7 @@
                 return;
             }
 
-
+            // NOVO: Função para buscar e combinar todos os anúncios
             async function fetchAllAnnouncements() {
                 try {
                     const responseStatic = await fetch('assets/data/announcements.json');
@@ -169,12 +171,12 @@
                     }
                     const staticAnnouncements = await responseStatic.json();
 
-                    const userAnnouncements = getUserAnnouncements(); 
+                    const userAnnouncements = getUserAnnouncements(); // Busca anúncios criados por usuários
                     
-                    return [...staticAnnouncements, ...userAnnouncements]; 
+                    return [...staticAnnouncements, ...userAnnouncements]; // Combina e retorna
                 } catch (error) {
                     console.error('Erro ao buscar todos os anúncios:', error);
-                    return []; 
+                    return []; // Retorna array vazio em caso de erro
                 }
             }
 

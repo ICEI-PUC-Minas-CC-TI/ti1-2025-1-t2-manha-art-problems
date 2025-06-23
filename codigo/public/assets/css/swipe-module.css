@@ -1,84 +1,89 @@
+/* ==================================== */
+/* ESTILOS DO MÓDULO DE SWIPE (TINDER-LIKE) E SIDEBAR */
+/* ==================================== */
 
+/* Estilos da Sidebar (painel lateral) */
 .swipe-module-sidebar {
     position: fixed;
     top: 0;
     right: 0;
-    width: 450px; 
-    max-width: 90%; 
+    width: 450px; /* Largura da barra lateral */
+    max-width: 90%; /* Garante que em telas pequenas não ocupe demais */
     height: 100%;
-    background: linear-gradient(135deg, #f8f0e3, #e0cba8); 
-    box-shadow: -8px 0 20px rgba(0, 0, 0, 0.3); 
-    transform: translateX(100%); 
+    background: linear-gradient(135deg, #f8f0e3, #e0cba8); /* Fundo com gradiente suave ArtFlow */
+    box-shadow: -8px 0 20px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada */
+    transform: translateX(100%); /* Escondido por padrão */
     transition: transform 0.4s ease-out;
-    z-index: 1000; 
+    z-index: 1000; /* Acima de todo o resto */
     padding: 20px;
-    box-sizing: border-box; 
+    box-sizing: border-box; /* Inclui padding na largura */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
-    border-top-left-radius: 20px; 
-    border-bottom-left-radius: 20px; 
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    border-top-left-radius: 20px; /* Bordas arredondadas no topo esquerdo */
+    border-bottom-left-radius: 20px; /* Bordas arredondadas no inferior esquerdo */
 }
 
 .swipe-module-sidebar.is-open {
-    transform: translateX(0);
+    transform: translateX(0); /* Mostra a barra lateral */
 }
 
+/* Overlay que escurece o fundo */
 .swipe-module-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); 
+    background-color: rgba(0, 0, 0, 0.6); /* Overlay mais escuro */
     z-index: 999;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s ease-in-out, visibility 0s ease-in-out 0.4s; 
+    transition: opacity 0.4s ease-in-out, visibility 0s ease-in-out 0.4s; /* Ajuste no delay para esconder */
 }
 
 .swipe-module-overlay.is-visible {
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.4s ease-in-out, visibility 0s ease-in-out 0s; 
+    transition: opacity 0.4s ease-in-out, visibility 0s ease-in-out 0s; /* Sem delay para mostrar */
 }
 
-
+/* Botão de fechar a sidebar */
 .close-swipe-module {
     position: absolute;
-    top: 20px; 
-    left: 20px; 
+    top: 20px; /* Mais afastado da borda */
+    left: 20px; /* Mais afastado da borda */
     background: none;
     border: none;
-    font-size: 2.2em;
-    color: var(--color-text); 
+    font-size: 2.2em; /* Ícone maior */
+    color: var(--color-text); /* Cor do texto ArtFlow */
     cursor: pointer;
-    z-index: 1001; 
+    z-index: 1001; /* Garante que o botão esteja acima do card de perfil */
     transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .close-swipe-module:hover {
-    color: var(--color-primary); 
-    transform: rotate(90deg); 
+    color: var(--color-primary); /* Cor principal ao passar o mouse */
+    transform: rotate(90deg); /* Pequena rotação ao passar o mouse */
 }
 
-
+/* Estilos para o container do perfil dentro da sidebar */
 .profile-container {
     width: 100%;
     max-width: 380px;
     margin: 0 auto;
-    background-color: #fff; 
-    border-radius: 25px; 
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); 
-    padding: 35px; 
+    background-color: #fff; /* Fundo branco puro para o card de perfil */
+    border-radius: 25px; /* Mais arredondado */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Sombra mais suave e espalhada */
+    padding: 35px; /* Mais padding interno */
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
-    border: 1px solid rgba(0,0,0,0.08); 
+    border: 1px solid rgba(0,0,0,0.08); /* Borda sutil */
 }
 
-
+/* Animação para quando um novo perfil é carregado */
 .profile-container.fade-in-scale {
     animation: fadeInScale 0.5s ease-out forwards;
 }
@@ -95,78 +100,78 @@
 }
 
 
-
+/* Imagem do perfil */
 .profile-image {
-    width: 180px; 
-    height: 180px; 
+    width: 180px; /* Tamanho ajustado */
+    height: 180px; /* Tamanho ajustado */
     background-color: #ddd;
     border-radius: 50%;
     margin: 0 auto 25px;
     background-size: cover;
     background-position: center;
-    border: 6px solid var(--color-accent); 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
+    border: 6px solid var(--color-accent); /* Borda mais grossa com a cor de destaque */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Sombra da imagem */
     transition: all 0.3s ease;
 }
 
-
+/* Informações do perfil */
 .profile-info {
     margin-bottom: 25px;
 }
 
 .profile-info p {
-    font-family: 'Playfair Display', serif; 
-    font-size: 1.3rem; 
+    font-family: 'Playfair Display', serif; /* Mantém a fonte ArtFlow */
+    font-size: 1.3rem; /* Um pouco maior */
     color: var(--color-text);
     margin: 5px 0;
     font-weight: 600;
 }
 
-
+/* Botão "Ver Portfolio" */
 .swipe-portfolio-button {
-    margin-top: 20px; 
-    padding: 12px 25px; 
-    font-size: 1em; 
+    margin-top: 20px; /* Mais espaço */
+    padding: 12px 25px; /* Ajuste o padding para o botão */
+    font-size: 1em; /* Ajuste o tamanho da fonte */
 }
 
-
+/* Botões principais (like, dislike etc.) */
 .profile-buttons {
     display: flex;
     justify-content: space-around;
-    margin-top: 30px; 
+    margin-top: 30px; /* Mais espaço acima */
     margin-bottom: 30px;
-    width: 90%; 
+    width: 90%; /* Ocupa mais espaço horizontal */
     margin-left: auto;
     margin-right: auto;
 }
 
 .profile-buttons img {
-    width: 60px; 
-    height: 60px; 
+    width: 60px; /* Ícones maiores */
+    height: 60px; /* Ícones maiores */
     cursor: pointer;
-    border-radius: 50%; 
-    padding: 8px; 
-    background-color: rgba(255, 255, 255, 0.7); 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+    border-radius: 50%; /* Fazem os botões parecerem redondos */
+    padding: 8px; /* Padding interno para o ícone */
+    background-color: rgba(255, 255, 255, 0.7); /* Fundo sutil */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Sombra para botões */
     transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-buttons img:hover {
-    transform: scale(1.15); 
-    background-color: rgba(var(--color-accent), 0.1); 
+    transform: scale(1.15); /* Aumenta mais no hover */
+    background-color: rgba(var(--color-accent), 0.1); /* Um toque da cor de destaque */
     box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
-
+/* Animação de clique para botões de interação */
 .profile-buttons img:active {
     transform: scale(0.9);
     filter: brightness(1.2);
 }
 
-
+/* Animação para o botão de estrela (SuperLike) */
 @keyframes starPulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.3); filter: brightness(1.5); } 
+    50% { transform: scale(1.3); filter: brightness(1.5); } /* Mais pulso e brilho */
     100% { transform: scale(1); }
 }
 
@@ -175,21 +180,21 @@
 }
 
 
-
+/* Botões do rodapé (mensagem, atualizar) */
 .footer-buttons {
     display: flex;
     justify-content: space-around;
-    margin-top: 25px; 
-    width: 70%; 
+    margin-top: 25px; /* Mais espaço acima */
+    width: 70%; /* Ocupa mais espaço horizontal */
     margin-left: auto;
     margin-right: auto;
-    border-top: 1px solid rgba(0,0,0,0.1); 
+    border-top: 1px solid rgba(0,0,0,0.1); /* Linha divisória */
     padding-top: 25px;
 }
 
 .footer-buttons img {
-    width: 45px; 
-    height: 45px;
+    width: 45px; /* Ícones maiores */
+    height: 45px; /* Ícones maiores */
     cursor: pointer;
     border-radius: 50%;
     padding: 6px;
@@ -204,14 +209,14 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-
+/* Animação de clique para botões do rodapé */
 .footer-buttons img:active {
     transform: scale(0.9);
     filter: brightness(1.2);
 }
 
 
-
+/* Animação de chacoalhar */
 @keyframes shake {
     0% { transform: translateX(0); }
     20% { transform: translateX(-5px); }
@@ -221,7 +226,7 @@
     100% { transform: translateX(0); }
 }
 
-
+/* Estilo para a área de preview do portfólio (quando exibida) */
 #portfolio-preview {
     margin-top: 20px;
     border: 1px solid var(--color-secondary);
@@ -241,7 +246,7 @@
     margin-bottom: 10px;
 }
 
-
+/* Estilo para links dentro do preview de portfolio, se houver */
 #portfolio-preview a {
     color: var(--color-primary);
     text-decoration: underline;

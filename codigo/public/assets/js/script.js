@@ -1,4 +1,4 @@
-import { getUserAnnouncements } from './auth.js'; 
+import { getUserAnnouncements } from './auth.js'; // AGORA NO TOPO DO ARQUIVO
 
 document.addEventListener('DOMContentLoaded', () => {
     const announcementContainer = document.getElementById('announcement-container');

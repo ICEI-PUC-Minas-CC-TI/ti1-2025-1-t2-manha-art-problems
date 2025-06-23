@@ -1,13 +1,13 @@
-
+// public/assets/js/utils.js
 
 const notificationElement = document.getElementById('customNotification');
 let notificationTimeout;
 
 /**
  * Exibe uma notificação personalizada na tela.
- * @param {string} message 
- * @param {string} type 
- * @param {number} duration.
+ * @param {string} message A mensagem a ser exibida.
+ * @param {string} type O tipo da notificação ('success', 'error', 'info').
+ * @param {number} duration Duração em milissegundos para a notificação aparecer.
  */
 export function showNotification(message, type = 'info', duration = 3000) {
     if (!notificationElement) {

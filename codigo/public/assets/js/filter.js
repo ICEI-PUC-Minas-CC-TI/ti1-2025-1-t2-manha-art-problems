@@ -1,4 +1,6 @@
+// public/assets/js/filter.js
 
+// Importa a função para obter anúncios de usuários do auth.js
 import { getUserAnnouncements } from './auth.js'; 
 
 const filtrosData = {
@@ -6,7 +8,7 @@ const filtrosData = {
         "palavra_chave": "",
         "preco": {
             "min": 0,
-            "max": 1000 
+            "max": 1000 // Aumentei o max para o range slider
         },
         "tags": [
             {
@@ -58,20 +60,20 @@ let allAnnouncements = [];
 
 async function fetchAnnouncementsForFilter() {
     try {
-        
+        // Busca anúncios estáticos
         const responseStatic = await fetch('assets/data/announcements.json');
         if (!responseStatic.ok) {
             throw new Error(`Erro ao carregar anúncios estáticos para filtro: ${responseStatic.status} ${responseStatic.statusText}`);
         }
         const staticAnnouncements = await responseStatic.json();
 
-        
+        // Busca anúncios criados por usuários (do localStorage)
         const userAnnouncements = getUserAnnouncements();
 
-       
+        // Combina as duas listas de anúncios
         allAnnouncements = [...staticAnnouncements, ...userAnnouncements];
         
-   
+        // Exibe todos os anúncios inicialmente (antes de aplicar qualquer filtro)
         mostrarTalentos(allAnnouncements);
 
     } catch (error) {
@@ -177,14 +179,15 @@ function filtrarResultados() {
 document.addEventListener('DOMContentLoaded', () => {
     gerarFiltrosDeTags();
     atualizarValoresPreco();
-    fetchAnnouncementsForFilter(); 
- 
+    fetchAnnouncementsForFilter(); // Carrega os anúncios para o filtro
+
+    // Adiciona ouvintes de evento para os inputs de preço
     minPriceInput.addEventListener('input', () => {
         if (parseInt(minPriceInput.value) > parseInt(maxPriceInput.value)) {
             maxPriceInput.value = minPriceInput.value;
         }
         atualizarValoresPreco();
-        filtrarResultados(); 
+        filtrarResultados(); // Filtra ao mover o slider
     });
 
     maxPriceInput.addEventListener('input', () => {
@@ -192,13 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
             minPriceInput.value = maxPriceInput.value;
         }
         atualizarValoresPreco();
-        filtrarResultados(); 
+        filtrarResultados(); // Filtra ao mover o slider
     });
 
-    keywordInput.addEventListener('input', filtrarResultados); 
-    applyFiltersButton.addEventListener('click', filtrarResultados); 
+    keywordInput.addEventListener('input', filtrarResultados); // Filtra em tempo real na digitação
+    applyFiltersButton.addEventListener('click', filtrarResultados); // Botão "Buscar Harmonia"
     
-   
+    // Adiciona ouvintes para todos os checkboxes de tags (para filtrar ao clicar na tag)
     tagsFilterDiv.addEventListener('change', (event) => {
         if (event.target.type === 'checkbox' && event.target.name === 'tag') {
             filtrarResultados();
