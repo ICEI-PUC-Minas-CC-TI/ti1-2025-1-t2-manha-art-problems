@@ -1,0 +1,266 @@
+[33mcommit 71b42dff1e4f3c0da18396036a356035761784c8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Sun Jun 22 11:22:51 2025 -0300
+
+    versão 1.0
+
+[33mcommit 4528ff17305a521e950fdf6834f89b03b5c2bb19[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Sun Jun 22 00:43:45 2025 -0300
+
+    criar serviço totalmente funcional
+
+[33mcommit d5a109e861d595d9e710ac1fedbcfc7cadd88920[m
+Merge: e3ebf50 9dff2d3
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Sat Jun 21 16:42:08 2025 -0300
+
+    comentarios radicais
+
+[33mcommit e3ebf50657d5f3e7c382663b82a5fe4bf70eaa48[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Sat Jun 21 16:34:00 2025 -0300
+
+    comentarios radicais
+
+[33mcommit 9dff2d33aa6a0b64f1a4dfa0b7ba1c0f35dec27d[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Sat Jun 21 00:55:04 2025 -0300
+
+    Melhor design, tinder-likr finalizado
+
+[33mcommit 5a916eb904bc0b2609c445b32b91297185ecac25[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Fri Jun 20 23:22:03 2025 -0300
+
+    salvos
+
+[33mcommit ab45f0d1865fd9e75b7eac9712157edb5f68b7e5[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Fri Jun 20 22:59:46 2025 -0300
+
+    mudanças do tinder like (animações, alem de fim dos bugs)
+
+[33mcommit f7aeab197be6e2437cd1a9a6789f70e00fd00883[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Thu Jun 19 19:24:38 2025 -0300
+
+    Tinder-like versão inicial
+
+[33mcommit 726bceb92e9487c551122ea36291c696975fb4a2[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Thu Jun 19 16:00:55 2025 -0300
+
+    filtro/anuncios 100%
+
+[33mcommit dc4c391f6f264dcc3a47964459efe2a70470bac2[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Thu Jun 19 14:17:00 2025 -0300
+
+    Removidos arquivos não utilizados
+
+[33mcommit f838ece88a148adb801b4bd6c7b09267c4093b69[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Thu Jun 19 13:27:50 2025 -0300
+
+    LOgin 100% funcional
+
+[33mcommit 7a292c6e2058d14f12240eb7c51b2af8e16b1c21[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Wed Jun 18 11:30:57 2025 -0300
+
+    nova atulização login
+
+[33mcommit 2d8f73e2c45a9586fdccf841635c5e9c8ea66903[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Tue Jun 17 19:29:58 2025 -0300
+
+    home page atualizado, login atulizando
+
+[33mcommit e7f088cd81c7b898244d55875dfdc0e0fe53e80d[m
+Author: Mwjunior404 <mario.finelli@sga.pucminas.br>
+Date:   Wed Jun 11 11:14:45 2025 -0300
+
+    Update script.js
+
+[33mcommit 9a25475fbf06cf7f9db6473dad8b7dc959b12fca[m
+Author: Mwjunior404 <mario.finelli@sga.pucminas.br>
+Date:   Wed Jun 11 11:10:40 2025 -0300
+
+    Update style.css
+
+[33mcommit 396d19fa746ae9d78132ab0fee98738628179f2c[m
+Author: Mwjunior404 <mario.finelli@sga.pucminas.br>
+Date:   Tue Jun 10 19:08:27 2025 -0300
+
+    Add files via upload
+
+[33mcommit 48c95fd66a282f29149224d1ec390d6832d5c0e3[m
+Author: Mwjunior404 <mario.finelli@sga.pucminas.br>
+Date:   Tue Jun 10 19:07:14 2025 -0300
+
+    Add files via upload
+
+[33mcommit 5cef68e9b84c66333bb42e57bd1d7519a7e25533[m
+Author: Gustavo <ghs019283@gmail.com>
+Date:   Tue Jun 10 17:22:08 2025 -0300
+
+    css
+
+[33mcommit 284317f6148ab0760f057ca493a382b7e906f38e[m
+Author: Gustavo <ghs019283@gmail.com>
+Date:   Tue Jun 10 17:21:34 2025 -0300
+
+    db.json funcionando
+
+[33mcommit 090f436b381c44cbb85cc3d69264bfb1af97780a[m
+Author: Gustavo <ghs019283@gmail.com>
+Date:   Tue Jun 10 17:20:55 2025 -0300
+
+    json
+
+[33mcommit 96df93b42d9e1124cd7802170ac19e7931f9674c[m
+Author: Gustavo <ghs019283@gmail.com>
+Date:   Tue Jun 10 17:19:25 2025 -0300
+
+    js
+
+[33mcommit a8cc8b266bf06fe4a5a955c05b2ef25d9aa0e5a8[m
+Author: Gustavo <ghs019283@gmail.com>
+Date:   Tue Jun 10 17:18:35 2025 -0300
+
+    index
+
+[33mcommit d688998c0a3c2f69ebdf31185cc7f55b5b7d9bac[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Tue Jun 10 16:19:41 2025 -0300
+
+    HomePage JS
+
+[33mcommit aceecace757f024174f0db122fb6c544f22aaf24[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Tue Jun 10 16:19:03 2025 -0300
+
+    HomePage JSON(placeholder)
+
+[33mcommit 4adb9c69b11e12ea10ec9f19f65d095f6fe122b1[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Tue Jun 10 16:17:11 2025 -0300
+
+    HomePage CSS  2.0
+
+[33mcommit 31ab315964d52f0abfc2ad15bb7b888321668a5b[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Tue Jun 10 16:16:15 2025 -0300
+
+    HomePage HTML 2.0
+
+[33mcommit d30741c88750a01718abc240cf2ef667dd726c6e[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Mon Jun 9 19:50:47 2025 -0300
+
+    teste final 2
+
+[33mcommit 6707ac485432cdd765dcae2b6fed4dd20222cbe7[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Mon Jun 9 19:49:05 2025 -0300
+
+    teste final
+
+[33mcommit 1458e402f65559b879b1a1ea61911b042d4562a0[m
+Merge: f277058 32b6dd7
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Wed Jun 4 17:59:10 2025 -0300
+
+    css homepage v1.0
+
+[33mcommit f277058e4dbb4dabd5c830d38bd1dc4e08c03c7b[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Wed Jun 4 17:52:23 2025 -0300
+
+    css homepage v1.0
+
+[33mcommit d283ba534cb2c9dffa1eaa742541aaf340ce0657[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Wed Jun 4 17:51:03 2025 -0300
+
+    checkpoint css
+
+[33mcommit 6634630f399737ae014dc2c00f6795322774a611[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Wed Jun 4 17:49:14 2025 -0300
+
+    html da homepage
+
+[33mcommit 32b6dd747e4406cf3f02f75d7cc8d3e3a9763a02[m
+Author: Mwjunior404 <mario.finelli@sga.pucminas.br>
+Date:   Wed Jun 4 12:22:00 2025 -0300
+
+    Add files via upload
+
+[33mcommit 8b302190d5d677117aa8b5db736342bd36fcdab4[m
+Author: Gustavo <ghs019283@gmail.com>
+Date:   Tue May 20 20:15:35 2025 -0300
+
+    sistema de curtidas v2
+
+[33mcommit d6be4acd68551b3775144851e4233a594d5db234[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Tue May 20 19:52:38 2025 -0300
+
+    vou me mata jsues
+
+[33mcommit 980a1e28db199fdf713f9da1faae0fb65a279b14[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Tue May 20 18:56:22 2025 -0300
+
+    BACKUP
+
+[33mcommit a5492aa7c6691fa95b497a1524abfd8efe7d62bc[m
+Author: Gustavo <ghs019283@gmail.com>
+Date:   Tue May 20 18:25:34 2025 -0300
+
+    sistema de curtida
+
+[33mcommit 5dc069094a7d9f36bf99e40118543ca0111fcbd2[m
+Merge: 86eb700 cf34afc
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Tue May 20 17:55:26 2025 -0300
+
+    Js filtro
+
+[33mcommit 86eb70026e3bacbef9f7b22f875ad890f613a414[m
+Author: Felipe dos Reis <felipereisaraujo11@gmail.com>
+Date:   Tue May 20 17:52:22 2025 -0300
+
+    Js filtro
+
+[33mcommit cf34afc8fa887ee4f592341d7ff951ec0d58d079[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Tue Apr 8 21:26:45 2025 -0300
+
+    Documentação do Projeto.1
+
+[33mcommit 4fcb847d121cdcab13cc072b98bf5d4a16489d04[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Tue Apr 8 21:13:44 2025 -0300
+
+    Documentação do Projeto
+
+[33mcommit 7ebb220806679c5d7bc855351b604f7603bf2448[m
+Author: Miguel Andrade Nascimento <meizuandrade@gmail.com>
+Date:   Mon Apr 7 22:03:52 2025 -0300
+
+    Projeto de Interfaces
+
+[33mcommit 9abe25f6fc58c4b1deb0bb556a5f2e32b8dad4e9[m
+Author: github-classroom[bot] <66690702+github-classroom[bot]@users.noreply.github.com>
+Date:   Mon Apr 7 23:18:38 2025 +0000
+
+    add online IDE url
+
+[33mcommit 5a85f40360b0af8101e5259e92c3113fe6bdc1b9[m
+Author: github-classroom[bot] <66690702+github-classroom[bot]@users.noreply.github.com>
+Date:   Tue Apr 1 20:04:27 2025 +0000
+
+    Initial commit
