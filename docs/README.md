@@ -35,7 +35,7 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 **Desenvolver um software que proporcione um ambiente seguro e eficiente para que artistas de diferentes ramos possam encontrar e estabelecer contato com potenciais clientes, além de facilitar a formação de grupos colaborativos entre profissionais para a realização de trabalhos conjuntos.**
 
-Objetivos Específicos:
+## Objetivos Específicos:
 
 **Investigar e especificar os requisitos funcionais e não funcionais do software: Realizar um levantamento detalhado das necessidades dos artistas e potenciais clientes, identificando as funcionalidades essenciais para a interação, comunicação, apresentação de portfólio, busca por profissionais e formação de grupos. Isso incluirá a definição de aspectos como segurança da informação, usabilidade, desempenho e escalabilidade da plataforma.**
 
@@ -193,53 +193,44 @@ Estes são os protótipos de telas do sistema.
 ### User Flow
 
 **✳️✳️✳️ COLOQUE AQUI O DIAGRAMA DE FLUXO DE TELAS ✳️✳️✳️**
+
 ![flow](images/flow.png)
 
 ### Protótipo Interativo
 
 **✳️✳️✳️ COLOQUE AQUI UM IFRAME COM SEU PROTÓTIPO INTERATIVO ✳️✳️✳️**
 
-✅ [Protótipo Interativo (MarvelApp)](https://marvelapp.com/prototype/4hd6091?emb=1&iosapp=false&frameless=false)  ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Um protótipo interativo apresenta o projeto de interfaces e permite ao usuário navegar pelas funcionalidades como se estivesse lidando com o software pronto. Utilize as mesmas ferramentas de construção de wireframes para montagem do seu protótipo interativo. Inclua o link para o protótipo interativo do projeto.
+✅ [Protótipo Interativo (Figma)](https://www.figma.com/design/LmIdkuCLTYLQLF6XbSAtYK/Untitled--Copy-?node-id=0-1&t=cpZj2WsiqvPg7lm7-1)
 
 # Metodologia
 
-O grupo teve uma organização onde a maoria dos intregantes fizeram tudo conjuto, todos ajudaram para possibilitar varias ideias em diferentes paretes do trabalho. Usamos o discord para comunicação, miro para grande parte dos mapas e Ibis paint X para o wireframe e flow.
+O grupo teve uma organização onde a maioria dos intregantes fizeram tudo conjuto, todos ajudaram para possibilitar varias ideias em diferentes paretes do trabalho. Usamos o discord para comunicação, miro para grande parte dos mapas e Ibis paint X para o wireframe e flow.
+
 ## Ferramentas
 
 Relação de ferramentas empregadas pelo grupo durante o projeto.
 
-| Ambiente                    | Plataforma | Link de acesso                                                 |
-| --------------------------- | ---------- | ---------------------------------------------------------------|
-| Processo de Design Thinking | Miro       | https://encurtador.com.br/2LDo2                                |
-| Repositório de código       | GitHub     | https://github.com/Miguel-Nasciment/pbh-oficina-1-20250402.git |
-| Hospedagem do site          | Render     | https://site.render.com/XXXXXXX ⚠️ EXEMPLO ⚠️                 |
-| Protótipo Interativo        | MarvelApp  | https://marvelapp.com/XXXXXXX ⚠️ EXEMPLO ⚠️                   |
-|                             |            |                                                                |
+| Ambiente                    | Plataforma | Link de acesso                                                        |
+| --------------------------- | ---------- | ---------------------------------------------------------------       |
+| Processo de Design Thinking | Miro       | https://encurtador.com.br/2LDo2                                       |
+| Repositório de código       | GitHub     | https://github.com/Miguel-Nasciment/pbh-oficina-1-20250402.git        |
+| Hospedagem do site          | Render     | https://site.render.com/XXXXXXX ⚠️ EXEMPLO ⚠️                        |
+| Protótipo Interativo        | MarvelApp  | https://www.figma.com/design/LmIdkuCLTYLQLF6XbSAtYK/Untitled--Copy-?node-id=0-1&t=cpZj2WsiqvPg7lm7-1           |                                                                       |
+|                             |            |                                                                       |
 
 ## Gerenciamento do Projeto
 
 Divisão de papéis no grupo e apresentação da estrutura da ferramenta de controle de tarefas (Kanban).
 
-![Exemplo de Kanban](images/exemplo-kanban.png)
+  ![Kanban](image-1.png)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesta parte do documento, você deve apresentar  o processo de trabalho baseado nas metodologias ágeis, a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
->
 > **Orientações**:
->
 > - [Sobre Projects - GitHub Docs](https://docs.github.com/pt/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
 > - [Gestão de projetos com GitHub | balta.io](https://balta.io/blog/gestao-de-projetos-com-github)
 > - [(460) GitHub Projects - YouTube](https://www.youtube.com/playlist?list=PLiO7XHcmTsldZR93nkTFmmWbCEVF_8F5H)
 > - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
 > - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
-p
+
 # Solução Implementada
 
 Esta seção apresenta todos os detalhes da solução criada no projeto.
@@ -260,67 +251,194 @@ O vídeo a seguir traz uma apresentação do problema que a equipe está tratand
 
 Esta seção apresenta as funcionalidades da solução.Info
 
-##### Funcionalidade 1 - Cadastro de Contatos ⚠️ EXEMPLO ⚠️
+##### Funcionalidade 1 - Cadastro de Artistas
 
-Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
+Cadastro da pessoa/artista.
 
-* **Estrutura de dados:** [Contatos](#ti_ed_contatos)
+* **Estrutura de dados:** [Cadastro]
 * **Instruções de acesso:**
-  * Abra o site e efetue o login
-  * Acesse o menu principal e escolha a opção Cadastros
-  * Em seguida, escolha a opção Contatos
+  * Abra o site e clique em login
+  * Após isso, se ainda não tiver uma conta, cadastre-se.
+  * Selecione se você é um cliente ou um artista.
+
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.
->
-> Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.
+![Tela de Funcionalidade 1](image.png)
 
 ## Estruturas de Dados
 
 Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
 
-##### Estrutura de Dados - Contatos   ⚠️ EXEMPLO ⚠️
-
-Contatos da aplicação
+##### Estrutura de Dados - Cadastro do cliente
 
 ```json
   {
-    "id": 1,
-    "nome": "Leanne Graham",
-    "cidade": "Belo Horizonte",
-    "categoria": "amigos",
-    "email": "Sincere@april.biz",
-    "telefone": "1-770-736-8031",
-    "website": "hildegard.org"
+  "username": "gustavo",
+  "email": "gustavo@gmail.com",
+  "password": "carlos123",
+  "type": "cliente",
   }
   
 ```
 
-##### Estrutura de Dados - Usuários  ⚠️ EXEMPLO ⚠️
-
-Registro dos usuários do sistema utilizados para login e para o perfil do sistema
+##### Estrutura de Dados - Artista
 
 ```json
   {
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    email: "admin@abc.com",
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    login: "admin",
-    nome: "Administrador do Sistema",
-    senha: "123"
+  username: "gu3",
+  email: "robert@gmail.com", 
+  password: "jorge2", 
+  type: "artflow"
   }
 ```
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente as estruturas de dados utilizadas na solução tanto para dados utilizados na essência da aplicação quanto outras estruturas que foram criadas para algum tipo de configuração
->
-> Nomeie a estrutura, coloque uma descrição sucinta e apresente um exemplo em formato JSON.
->
+##### Funcionalidade 2 - Criação de serviços 
+
+Criar e postar um serviço.
+
+* **Estrutura de dados:** [Criação de serviços]
+* **Instruções de acesso:**
+  * Abra o site e logue
+  * Após isso, clique em criar serviço
+  * Crie seu serviço
+
+* **Tela da funcionalidade**:
+
+![Tela funcionalidade 2](image-2.png)
+
+## Estruturas de Dados
+
+Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
+
+##### Estrutura de Dados - Cadastro do serviço
+
+
+```json
+{
+"artist_name": "gu3",
+"category": "Artista Digital",
+"description": "realismo",
+"id": "user-service-1750626721076",
+"imageUrl": "https://img.freepik.com/fotos-gratis/imagem-vertical-de-foco-raso-de-um-filhote-de-cachorro-golden-retriever-fofo-sentado-em-um-gramado_181624-27259.jpg?semt=ais_hybrid&w=740",
+"portfolio_media": [{type: "image",…}, {type: "image",…}],
+"price": 150,
+"price_unit": "",
+"tags": ["Artista Digital", "Desenhista", "Pintor", "Escultor", "Ilustrador", "Gravurista", "Quadrinista",…],
+"title": "pintura",
+}
+```
+##### Funcionalidade 3 - Sistema de filtros
+
+Um sistema capaz de filtar e se adequar as necessidades das pessoas.
+
+* **Estrutura de dados:** [filtros].js
+* **Instruções de acesso:**
+  * Abra o site e logue.
+  * Após isso, na tela inicial selecione suas tags desejadas.
+
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade 3](image-3.png)
+
+## Estruturas de Dados
+
+Foram usadas estruturas .js para a realização do esquema de filtros.
+
+##### Estrutura de Dados - Cadastro do cliente
+
+``` exemplo da estrutura .js
+ {
+                "categoria": "Artes Visuais",
+                "subtags": [
+                    "Desenhista", "Artista Digital", "Pintor", "Escultor", "Ilustrador",
+                    "Gravurista", "Quadrinista", "Tatuador", "Artista de Rua (Grafiteiro, Muralista)",
+                    "Cartunista", "Animador (2D, 3D)", "Modelador 3D", "Artista de Instalação",
+                    "Artista Conceitual"
+                ]
+},
+```
+##### Funcionalidade 4 - Sistema de comentários
+
+Sistema de comentários, podendo assim comentar no anuncio de outras pessoas.
+
+* **Estrutura de dados:** [Comentario]
+* **Instruções de acesso:**
+  * Abra o site e logue.
+  * Após isso, selecione um anuncio.
+  * Realize um comentário.
+
+* **Tela da funcionalidade**:
+
+![Tela Funcionalidade 4](image-4.png)
+
+## Estruturas de Dados
+
+Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
+
+##### Estrutura de Dados - Cadastro do cliente
+
+```json
+ {"author": "RENATA",
+  "text": "FICOU INCRIVEL", 
+  "date": "10 de junho de 2025"
+  }
+```
+
+##### Funcionalidade 5 - Sistema de salvar perfis do quickfinder
+
+Sistema de comentários.
+
+* **Estrutura de dados:** [Salvos]
+* **Instruções de acesso:**
+  * Abra o site e logue.
+  * Após isso, abra o quickfinder.
+  * Clique na estrela
+  * Feche o quickfinder.
+  * Abra a parte de salvos.
+
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade 5](image-5.png)
+
+## Estruturas de Dados
+
+Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
+
+##### Estrutura de Dados - Cadastro do cliente
+
+```json
+Essa estrutura nao requer um json para funcionar, vito que é uma página html.
+```
+
+##### Funcionalidade 6 - Quickfinder
+
+Sistema para conectar artistas e produtores de maneira mais simples, interface semelhante ao tinder.
+
+* **Estrutura de dados:** [Quickfinder]
+* **Instruções de acesso:**
+  * Abra o site e logue.
+  * Após isso, abra o quickfinder.
+
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade 6](image-6.png)
+
+## Estruturas de Dados
+
+Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
+Foram utilizadas HTML, .JS, CSS e BD.JSON
+
+##### Estrutura de Dados - Cadastro do cliente
+
+```json
+{
+        nome: "Ana",
+        idade: 43,
+        nota: 9.8,
+        imagem: "images/perfis/pessoa1.png",
+        verPreviewPortfolio: "portfolio/ana-preview.html",
+    },
+```
 > **Orientações:**
 >
 > * [JSON Introduction](https://www.w3schools.com/js/js_json_intro.asp)
@@ -332,31 +450,27 @@ Esta seção apresenta os módulos e APIs utilizados na solução
 
 **Images**:
 
-* Unsplash - [https://unsplash.com/](https://unsplash.com/) ⚠️ EXEMPLO ⚠️
+* Unsplash - [https://unsplash.com/](https://unsplash.com/)
+* thispersondoesnotexist - [https://thispersondoesnotexist.com] (https://thispersondoesnotexist.com)
 
 **Fonts:**
 
-* Icons Font Face - [https://fontawesome.com/](https://fontawesome.com/) ⚠️ EXEMPLO ⚠️
+* Icons Font Face - [https://fontawesome.com/](https://fontawesome.com/)
+* Flaticon - [https://www.flaticon.com/br/] (https://www.flaticon.com/br/)
 
 **Scripts:**
 
-* jQuery - [http://www.jquery.com/](http://www.jquery.com/) ⚠️ EXEMPLO ⚠️
-* Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente os módulos e APIs utilizados no desenvolvimento da solução. Inclua itens como: (1) Frameworks, bibliotecas, módulos, etc. utilizados no desenvolvimento da solução; (2) APIs utilizadas para acesso a dados, serviços, etc.
+* jQuery - [http://www.jquery.com/](http://www.jquery.com/)
+* Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) 
 
 # Referências
 
 As referências utilizadas no trabalho foram:
+ * Tinder
+ * OLX
+ * 20 pila
+ * Fiverr
 
-* SOBRENOME, Nome do autor. Título da obra. 8. ed. Cidade: Editora, 2000. 287 p ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados no desenvolvimento do trabalho.
->
 > **Orientações**:
 >
 > - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
